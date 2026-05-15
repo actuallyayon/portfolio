@@ -734,7 +734,7 @@ section {
 /* PROJECTS */
 .pg {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.4rem
 }
 
@@ -745,17 +745,24 @@ section {
   overflow: hidden;
   transition: all .35s;
   display: flex;
-  flex-direction: column
+  flex-direction: column;
+  cursor: pointer
 }
 
-.pc:hover {
+.pc:hover,
+.pc:focus-visible {
   border-color: var(--border-b);
   transform: translateY(-5px);
   box-shadow: 0 20px 50px rgba(77, 159, 255, .1)
 }
 
+.pc:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px
+}
+
 .pc.big {
-  grid-column: span 2;
+  grid-column: span 3;
   flex-direction: row
 }
 
@@ -766,22 +773,30 @@ section {
 }
 
 .pc.big .pc-thumb {
-  width: 280px;
+  width: 420px;
   height: 100%;
   object-position: top center
 }
 
+.pc.big .pc-body {
+  padding: 2rem 2.2rem
+}
+
 .pc:not(.big) .pc-thumb {
   width: 100%;
-  height: 180px;
+  height: 135px;
   object-position: top center
 }
 
 .pc-body {
-  padding: 1.6rem;
+  padding: 1.35rem;
   flex: 1;
   display: flex;
   flex-direction: column
+}
+
+.pc:not(.big) .pc-body {
+  padding: 1.15rem
 }
 
 .pc-top {
@@ -824,7 +839,7 @@ section {
 .pc-ttl {
   font-family: 'Fraunces', serif;
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: .5rem;
   letter-spacing: -.01em
 }
@@ -836,7 +851,7 @@ section {
 .pc-d {
   font-size: .76rem;
   color: var(--muted);
-  line-height: 1.8;
+  line-height: 1.65;
   margin-bottom: 1.1rem;
   flex: 1
 }
@@ -1050,6 +1065,22 @@ footer {
 
 .d3 {
   transition-delay: .3s
+}
+
+@media(max-width:980px) {
+  .pg {
+    grid-template-columns: repeat(2, 1fr)
+  }
+
+  .pc.big {
+    grid-column: span 2;
+    flex-direction: column
+  }
+
+  .pc.big .pc-thumb {
+    width: 100%;
+    height: 240px
+  }
 }
 
 @media(max-width:768px) {
