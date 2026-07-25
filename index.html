@@ -3,132 +3,132 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ayon | Full Stack Developer</title>
+<title>Obaydur Rahman Ayon — Full Stack Developer</title>
+<meta name="description" content="Obaydur Rahman Ayon — Full Stack Developer crafting scalable, modern web applications with Next.js, React, Node.js & TypeScript. Available for internships and remote roles worldwide."/>
+<meta name="author" content="Obaydur Rahman Ayon"/>
+<meta name="keywords" content="Obaydur Rahman Ayon, Ayon, Full Stack Developer, Full Stack, React, Node.js, Next.js, TypeScript, Web Developer, Khulna, Bangladesh"/>
+<meta name="theme-color" content="#05080f"/>
+<link rel="canonical" href="https://actuallyayon.github.io/portfolio/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Obaydur Rahman Ayon — Full Stack Developer"/>
+<meta property="og:description" content="Crafting scalable, modern web apps with Full Stack technologies, Next.js & TypeScript."/>
+<meta property="og:image" content="profile/ayon.png"/>
+<meta property="og:url" content="https://actuallyayon.github.io/portfolio/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Obaydur Rahman Ayon — Full Stack Developer"/>
+<meta name="twitter:description" content="Crafting scalable, modern web apps with Full Stack technologies, Next.js & TypeScript."/>
+<meta name="twitter:image" content="profile/ayon.png"/>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2305080f'/%3E%3Ctext x='50' y='70' font-family='Arial,sans-serif' font-size='58' font-weight='700' text-anchor='middle' fill='%233b6fff'%3EA%3C/text%3E%3C/svg%3E"/>
+
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="preload" as="image" href="profile/ayon.png" fetchpriority="high"/>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
+<div class="noise"></div>
+<div class="orbs" aria-hidden="true">
+  <span class="orb o1"></span>
+  <span class="orb o2"></span>
+  <span class="orb o3"></span>
+</div>
 <div class="cursor" id="cur"></div>
 <div class="cursor-ring" id="curR"></div>
-<div class="stars"></div>
-<div class="grid-bg"></div>
-<div class="blob blob1"></div>
-<div class="blob blob2"></div>
+
+<!-- PROGRESS -->
+<div class="progress" id="progress"></div>
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="logo">Ayon<b>.</b></div>
-  <ul class="nl">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <a href="#home" class="logo">Ayon<b>.</b></a>
+  <ul class="nl" id="navlinks">
+    <li><a href="#about" data-n="01">About</a></li>
+    <li><a href="#skills" data-n="02">Skills</a></li>
+    <li><a href="#work" data-n="03">Work</a></li>
+    <li><a href="#journey" data-n="04">Journey</a></li>
+    <li><a href="#contact" data-n="05">Contact</a></li>
   </ul>
-  <a href="mailto:actuallyayon@gmail.com" class="btn-nav">Hire Me</a>
+  <a href="mailto:actuallyayon@gmail.com" class="btn-nav" data-magnetic>Let's talk</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-inner">
-    <div>
-      <div class="badge"><span class="dot"></span> Available · Open to Work</div>
-      <p class="hero-sub">Full Stack Developer</p>
-      <h1 class="hero-name">Crafting<br><em>digital</em><br><b>experiences.</b></h1>
-      <p class="hero-role">MERN Stack · React · Node.js</p>
-      <p class="hero-desc">I build scalable, modern web applications with clean code and pixel-perfect UIs. Seeking internships and remote opportunities worldwide.</p>
-      <div class="ctas">
-        <a href="#projects" class="btn-p">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          View Projects
-        </a>
-        <a href="#contact" class="btn-o">Get in Touch</a>
-        <a href="resume/Resume.pdf" class="btn-o" download="Obaydur_Rahman_Ayon_Resume.pdf">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
-          Resume
-        </a>
+<header class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-main">
+      <div class="hero-avail rv"><span class="ping"></span> Available · Open to Work</div>
+      <h1 class="hero-title">
+        <span class="line rv"><span>Full&nbsp;Stack</span></span>
+        <span class="line rv"><em>Developer</em></span>
+        <span class="line rv">&amp; problem<span class="amp">·</span>solver</span>
+      </h1>
+      <div class="hero-foot rv">
+        <p class="hero-desc">I build scalable, end-to-end web applications — from pixel-perfect interfaces to robust APIs. CS student &amp; Full Stack Developer based in Khulna, Bangladesh.</p>
+        <div class="ctas">
+          <a href="#work" class="btn-p" data-magnetic>
+            <span>View selected work</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="resume/Resume.pdf" target="_blank" rel="noopener" class="btn-g" download="Obaydur_Rahman_Ayon_Resume.pdf">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+            Resume
+          </a>
+        </div>
       </div>
     </div>
-    <div class="hcard">
-      <img class="hcard-photo" src="profile/ayon.png" alt="Obaydur Rahman Ayon" fetchpriority="high" decoding="async">
-      <div class="hcard-name">Obaydur Rahman Ayon</div>
-      <div class="hcard-role">Full Stack Developer</div>
-      <div class="stats">
-        <div class="stat"><div class="stat-n">2+</div><div class="stat-l">Yrs Coding</div></div>
-        <div class="stat"><div class="stat-n">10+</div><div class="stat-l">Projects</div></div>
-        <div class="stat"><div class="stat-n">6+</div><div class="stat-l">Tech Stacks</div></div>
-        <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Curiosity</div></div>
+    <aside class="hero-side rv">
+      <div class="portrait">
+        <img src="profile/ayon.png" alt="Obaydur Rahman Ayon" fetchpriority="high" decoding="async"/>
+        <span class="portrait-tag">Khulna, BD · GMT+6</span>
       </div>
-      <div class="hcard-loc">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        Khulna, Bangladesh
-      </div>
-    </div>
+    </aside>
   </div>
-  <div class="scroll-hint"><div class="scroll-bar"></div><span>scroll</span></div>
-</section>
+  <div class="hero-meta rv">
+    <div class="hm"><span class="hm-n" data-count="5">0</span><span class="hm-l">Years coding</span></div>
+    <div class="hm"><span class="hm-n" data-count="10">0</span><span class="hm-l">Projects shipped</span></div>
+    <div class="hm"><span class="hm-n" data-count="6">0</span><span class="hm-l">Core stacks</span></div>
+    <div class="hm"><span class="hm-n">∞</span><span class="hm-l">Curiosity</span></div>
+  </div>
+</header>
 
 <!-- MARQUEE -->
-<div class="mq">
+<div class="mq" aria-hidden="true">
   <div class="mq-t">
-    <span class="mq-i">React.js<span class="mq-s"></span></span>
-    <span class="mq-i">Node.js<span class="mq-s"></span></span>
-    <span class="mq-i">MongoDB<span class="mq-s"></span></span>
-    <span class="mq-i">TypeScript<span class="mq-s"></span></span>
-    <span class="mq-i">Next.js<span class="mq-s"></span></span>
-    <span class="mq-i">Tailwind CSS<span class="mq-s"></span></span>
-    <span class="mq-i">Express.js<span class="mq-s"></span></span>
-    <span class="mq-i">Firebase<span class="mq-s"></span></span>
-    <span class="mq-i">REST API<span class="mq-s"></span></span>
-    <span class="mq-i">Redux Toolkit<span class="mq-s"></span></span>
-    <span class="mq-i">Git & GitHub<span class="mq-s"></span></span>
-    <span class="mq-i">React.js<span class="mq-s"></span></span>
-    <span class="mq-i">Node.js<span class="mq-s"></span></span>
-    <span class="mq-i">MongoDB<span class="mq-s"></span></span>
-    <span class="mq-i">TypeScript<span class="mq-s"></span></span>
-    <span class="mq-i">Next.js<span class="mq-s"></span></span>
-    <span class="mq-i">Tailwind CSS<span class="mq-s"></span></span>
-    <span class="mq-i">Express.js<span class="mq-s"></span></span>
-    <span class="mq-i">Firebase<span class="mq-s"></span></span>
-    <span class="mq-i">REST API<span class="mq-s"></span></span>
-    <span class="mq-i">Redux Toolkit<span class="mq-s"></span></span>
-    <span class="mq-i">Git & GitHub<span class="mq-s"></span></span>
+    <span>React</span><i>✦</i><span>Node.js</span><i>✦</i><span>MongoDB</span><i>✦</i><span>TypeScript</span><i>✦</i><span>Next.js</span><i>✦</i><span>Tailwind</span><i>✦</i><span>Express</span><i>✦</i><span>Full Stack</span><i>✦</i><span>REST API</span><i>✦</i><span>Redux Toolkit</span><i>✦</i>
+    <span>React</span><i>✦</i><span>Node.js</span><i>✦</i><span>MongoDB</span><i>✦</i><span>TypeScript</span><i>✦</i><span>Next.js</span><i>✦</i><span>Tailwind</span><i>✦</i><span>Express</span><i>✦</i><span>Full Stack</span><i>✦</i><span>REST API</span><i>✦</i><span>Redux Toolkit</span><i>✦</i>
   </div>
 </div>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="si">
-    <div class="ag">
-      <div class="rv">
-        <div class="aimg">
-          <img src="profile/ayon.png" alt="Obaydur Rahman Ayon" loading="lazy" decoding="async">
-          <div class="abadge">
-            <div class="abadge-dot"></div>
-            <div class="abadge-t">
-              <strong>Available for Hire</strong>
-              <span>Internship · Remote</span>
-            </div>
-          </div>
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kick">(01) — About</span>
+      <h2 class="sec-title">Building the web,<br><em>one commit</em> at a time.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo rv">
+        <img src="profile/ayon.png" alt="Obaydur Rahman Ayon" loading="lazy" decoding="async"/>
+        <div class="ap-badge">
+          <span class="ap-dot"></span>
+          <div><strong>Available for hire</strong><small>Internship · Remote</small></div>
         </div>
       </div>
-      <div class="rv d1">
-        <div class="stag">About Me</div>
-        <h2 class="sh">Building the web,<br><em>one commit</em> at a time.</h2>
-        <div class="atext">
-          <p>I'm a <b>Full Stack Developer</b> and CS student at North Western University, Khulna — passionate about building complete web solutions from pixel-perfect UIs to robust backend APIs.</p>
-          <p>My core stack is the <b>MERN ecosystem</b> (MongoDB, Express, React, Node.js), extended with TypeScript, Next.js, and cloud deployment.</p>
-          <p>I believe great software is equal parts <b>technical precision and user empathy</b> — every project starts with deeply understanding the problem first.</p>
-        </div>
-        <div class="ahigh">
-          <div class="ahi"><div class="ahi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5v4.2c0 1.1 2.7 2.3 6 2.3s6-1.2 6-2.3v-4.2"/></svg></div><div class="ahi-l">BSc CSE</div><div class="ahi-v">NWU Khulna · 2024–Present</div></div>
-          <div class="ahi"><div class="ahi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M5 6H3v2a4 4 0 0 0 4 4"/><path d="M19 6h2v2a4 4 0 0 1-4 4"/></svg></div><div class="ahi-l">ICPC Honorable Mention</div><div class="ahi-v">Asia Dhaka Preliminary 2024</div></div>
-          <div class="ahi"><div class="ahi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3h9l3 3v15H6V3Z"/><path d="M15 3v4h4"/><path d="M9 13h6"/><path d="M9 17h4"/></svg></div><div class="ahi-l">HackerRank Certified</div><div class="ahi-v">Frontend Developer · 2026</div></div>
-          <div class="ahi"><div class="ahi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.2 7-11a7 7 0 1 0-14 0c0 5.8 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg></div><div class="ahi-l">Based in</div><div class="ahi-v">Khulna, Bangladesh</div></div>
+      <div class="about-body rv">
+        <p class="lead">I'm a <b>Full Stack Web Developer</b> and Computer Science student at North Western University, Khulna — passionate about building modern, high-impact web applications.</p>
+        <p><b>My Journey:</b> My coding adventure started with algorithm design and competitive programming in C/C++, competing in events like the ICPC Asia Dhaka Regional Contest. Transitioning into full-stack web development, I fell in love with crafting end-to-end applications using modern <b>Full Stack &amp; Next.js ecosystems</b> (MongoDB, Express, React 19, Node.js, TypeScript, Next.js 16, Tailwind CSS 4) integrated with Stripe payments and AI cloud services.</p>
+        <p><b>Work I Enjoy:</b> I thrive on taking web applications from abstract concepts to production-ready platforms — combining intuitive, pixel-perfect user experiences with clean, maintainable backend architecture, real-time analytics dashboards, and robust authentication flows.</p>
+        <p><b>Outside of Coding:</b> When I'm not in front of a code editor, you'll find me watching <b>football matches</b>, playing immersive PC games (like <b>Red Dead Redemption 2</b> &amp; <b>Forza Horizon</b>), exploring UI/UX design inspiration, and sharing my development journey publicly (<b>#BuildInPublic</b>).</p>
+        <div class="about-facts">
+          <div class="fact"><span class="fact-k">Education</span><span class="fact-v">BSc CSE · NWU Khulna</span></div>
+          <div class="fact"><span class="fact-k">Honors</span><span class="fact-v">ICPC Asia Dhaka 2024</span></div>
+          <div class="fact"><span class="fact-k">Certified</span><span class="fact-v">HackerRank React '26</span></div>
+          <div class="fact"><span class="fact-k">Based in</span><span class="fact-v">Khulna, Bangladesh</span></div>
         </div>
       </div>
     </div>
@@ -136,141 +136,220 @@
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="sk-bg">
-  <div class="si">
-    <div class="stag rv">Skills & Tools</div>
-    <h2 class="sh rv">My technical <em>arsenal</em></h2>
-    <div class="sk-grid">
-      <div class="sk-cat rv">
-        <div class="sk-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="m13 2-9 12h7l-1 8 10-13h-7l1-7Z"/></svg>Frontend</div>
-        <div class="sk-tags"><span class="sk-t">React.js</span><span class="sk-t">Next.js</span><span class="sk-t">TypeScript</span><span class="sk-t">JavaScript</span><span class="sk-t">Tailwind CSS</span><span class="sk-t">Redux Toolkit</span><span class="sk-t">RTK Query</span></div>
+<section id="skills" class="alt">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kick">(02) — Capabilities</span>
+      <h2 class="sec-title">A full-stack <em>toolkit</em>.</h2>
+    </div>
+    <div class="skills">
+      <div class="skill-row rv">
+        <div class="sr-label"><span class="sr-num">01</span> Frontend</div>
+        <div class="sr-tags">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#61dafb" stroke-width="1.8"><ellipse cx="12" cy="12" rx="10" ry="4.5"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="1.8" fill="#61dafb"/></svg>React 19</span>
+          <span><svg viewBox="0 0 24 24" fill="currentColor" style="color:#fff"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm4.5 17.5l-5.6-7.8v7.8H9.4V6.5h2.1l5.5 7.7V6.5h1.5v11z"/></svg>Next.js 16</span>
+          <span><svg viewBox="0 0 24 24" fill="#3178c6"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 0 1 1.306.34v2.458a3.95 3.95 0 0 0-.643-.361 5.093 5.093 0 0 0-.745-.24 3.736 3.736 0 0 0-.825-.091c-.482 0-.83.084-1.045.253s-.322.427-.322.772c0 .241.059.444.177.608.117.164.301.306.551.427.251.12.56.238.928.353l.633.203c.532.17.973.364 1.321.58.349.217.618.485.808.804.19.319.285.719.285 1.2 0 .584-.157 1.077-.472 1.48-.315.402-.756.711-1.321.928-.566.216-1.238.324-2.016.324a10.05 10.05 0 0 1-1.63-.129 6.8 6.8 0 0 1-1.472-.416v-2.58a5.1 5.1 0 0 0 1.611.666c.551.124 1.047.186 1.488.186.522 0 .902-.095 1.14-.285.238-.19.357-.456.357-.798 0-.251-.064-.46-.192-.628a2.12 2.12 0 0 0-.583-.443 6.64 6.64 0 0 0-.967-.379l-.602-.2c-.522-.17-.954-.363-1.296-.578a2.535 2.535 0 0 1-.798-.8 2.378 2.378 0 0 1-.285-1.189c0-.572.152-1.057.457-1.455.304-.397.734-.7 1.288-.908a5.412 5.412 0 0 1 1.944-.312zM11.625 10v2.25h-2.5V21.5h-3V12.25h-2.5V10z"/></svg>TypeScript</span>
+          <span><svg viewBox="0 0 24 24" fill="#f7df1e"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zM17.3 18.25c-.7 1.2-1.9 1.9-3.4 1.9-2.3 0-3.6-1.3-3.6-3.3 0-1.8 1.1-2.9 3.2-3.1l1.8-.2v-.6c0-.9-.5-1.3-1.4-1.3-.8 0-1.3.4-1.5 1.1l-2.1-.8c.5-1.4 1.8-2.2 3.7-2.2 2.4 0 3.7 1.1 3.7 3.3v4.4c0 .7.1 1.2.3 1.6h-2.2l-.2-.8zm-1.6-3.1l-1.3.1c-1 .1-1.5.6-1.5 1.3 0 .8.6 1.3 1.6 1.3.9 0 1.5-.6 1.5-1.4v-1.3zm-6.9 3.3c-.9.6-1.9.9-3 .9-1.9 0-2.9-1.1-2.9-2.8v-6.7h2.4v6.5c0 .7.4 1.1 1.1 1.1.6 0 1.1-.2 1.6-.6l.8 1.6z"/></svg>JavaScript</span>
+          <span><svg viewBox="0 0 24 24" fill="#38bdf8"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C7.666 17.818 9.027 19.2 12.001 19.2c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>Tailwind CSS 4</span>
+          <span><svg viewBox="0 0 24 24" fill="#e0234e"><path d="M4 0h16v8h-8zM4 8h8l8 8H4zM4 16h8v8z"/></svg>Framer Motion</span>
+          <span><svg viewBox="0 0 24 24" fill="#ff4154"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/></svg>TanStack Query</span>
+          <span><svg viewBox="0 0 24 24" fill="#764abc"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.5 7.5a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm-9 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm4.5 9a4.5 4.5 0 0 1-4.5-4.5h9a4.5 4.5 0 0 1-4.5 4.5z"/></svg>Redux Toolkit</span>
+        </div>
       </div>
-      <div class="sk-cat rv d1">
-        <div class="sk-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3v18"/><path d="M5 8h14"/><path d="M5 16h14"/><circle cx="12" cy="8" r="2"/><circle cx="7" cy="16" r="2"/><circle cx="17" cy="16" r="2"/></svg>Backend</div>
-        <div class="sk-tags"><span class="sk-t">Node.js</span><span class="sk-t">Express.js</span><span class="sk-t">MongoDB</span><span class="sk-t">REST API</span><span class="sk-t">JWT Auth</span><span class="sk-t">Socket.io</span></div>
+      <div class="skill-row rv">
+        <div class="sr-label"><span class="sr-num">02</span> Backend</div>
+        <div class="sr-tags">
+          <span><svg viewBox="0 0 24 24" fill="#539e43"><path d="M12 1.5l10 5.8v11.4l-10 5.8-10-5.8V7.3l10-5.8zm0 2.4L4.2 8.4v7.2L12 20.1l7.8-4.5V8.4L12 3.9z"/></svg>Node.js</span>
+          <span><svg viewBox="0 0 24 24" fill="currentColor" style="color:#aaa"><path d="M24 12.014c0 6.627-5.373 12-12 12s-12-5.373-12-12 5.373-12 12-12 12 5.373 12 12.014zm-4.766-3.882c-1.3-.9-2.9-1.4-4.6-1.4-4.5 0-8.1 3.6-8.1 8.1 0 1.8.6 3.4 1.6 4.7l11.1-11.4zm-14.4 7.7c1.3.9 2.9 1.4 4.6 1.4 4.5 0 8.1-3.6 8.1-8.1 0-1.8-.6-3.4-1.6-4.7l-11.1 11.4z"/></svg>Express.js</span>
+          <span><svg viewBox="0 0 24 24" fill="#13aa52"><path d="M12 0s-7.5 7.5-7.5 14.5c0 4.14 3.36 7.5 7.5 7.5s7.5-3.36 7.5-7.5C19.5 7.5 12 0 12 0zm0 20c-3.04 0-5.5-2.46-5.5-5.5 0-4.8 4.2-9.8 5.5-11.3 1.3 1.5 5.5 6.5 5.5 11.3 0 3.04-2.46 5.5-5.5 5.5z"/></svg>MongoDB</span>
+          <span><svg viewBox="0 0 24 24" fill="#800000"><path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.8L19 8v8l-7 3.5L5 16V8l7-3.2z"/></svg>Mongoose</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#3b6fff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><circle cx="7" cy="10" r="1"/><circle cx="12" cy="10" r="1"/><circle cx="17" cy="10" r="1"/></svg>REST API</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Better Auth</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>JWT Auth</span>
+        </div>
       </div>
-      <div class="sk-cat rv d2">
-        <div class="sk-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M14.7 6.3a4 4 0 0 0-5 5L4 17v3h3l5.7-5.7a4 4 0 0 0 5-5l-2.4 2.4-3-3 2.4-2.4Z"/></svg>Tools & Platforms</div>
-        <div class="sk-tags"><span class="sk-t">Firebase</span><span class="sk-t">Stripe</span><span class="sk-t">Cloudinary</span><span class="sk-t">GitHub</span><span class="sk-t">Vercel</span><span class="sk-t">Netlify</span><span class="sk-t">Figma</span></div>
+      <div class="skill-row rv">
+        <div class="sr-label"><span class="sr-num">03</span> Integrations &amp; Cloud</div>
+        <div class="sr-tags">
+          <span><svg viewBox="0 0 24 24" fill="#635bfc"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C17.753.81 15.002.164 12.525.164 6.786.164 2.825 3.197 2.825 8.1c0 7.848 10.74 8.243 10.74 12.493 0 1.05-.939 1.597-2.316 1.597-2.73 0-5.617-1.196-7.51-2.155l-.946 5.748c2.083 1.05 5.253 1.705 8.163 1.705 6.077 0 10.213-2.909 10.213-7.989.001-8.528-10.74-8.87-10.74-12.75 0-.712.576-1.12 1.546-1.12 1.734 0 3.738.583 4.966 1.157l.035-5.636z"/></svg>Stripe Elements</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"/><path d="M12 6v6l4 2"/></svg>Groq Cloud (Llama 3)</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Recharts</span>
+          <span><svg viewBox="0 0 24 24" fill="#ffca28"><path d="M3.89 15.672L6.56 2.457a.78.78 0 0 1 1.472-.119l2.485 8.147 2.05-3.874a.78.78 0 0 1 1.378.028l6.16 11.602a.78.78 0 0 1-.72 1.166H4.498a.78.78 0 0 1-.608-1.275z"/></svg>Firebase</span>
+          <span><svg viewBox="0 0 24 24" fill="#3448c5"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>Cloudinary</span>
+          <span><svg viewBox="0 0 24 24" fill="currentColor" style="color:#fff"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</span>
+          <span><svg viewBox="0 0 24 24" fill="currentColor" style="color:#fff"><path d="M12 1L24 22H0L12 1z"/></svg>Vercel</span>
+          <span><svg viewBox="0 0 24 24" fill="none"><path d="M8 24c2.2 0 4-1.8 4-4v-4H8c-2.2 0-4 1.8-4 4s1.8 4 4 4z" fill="#0ACF83"/><path d="M4 12c0-2.2 1.8-4 4-4h4v8H8c-2.2 0-4-1.8-4-4z" fill="#A259FF"/><path d="M4 4c0-2.2 1.8-4 4-4h4v8H8C5.8 8 4 6.2 4 4z" fill="#F24E1E"/><path d="M12 0h4c2.2 0 4 1.8 4 4s-1.8 4-4 4h-4V0z" fill="#FF7262"/><path d="M20 12c0 2.2-1.8 4-4 4s-4-1.8-4-4 1.8-4 4-4 4 1.8 4 4z" fill="#1ABCFE"/></svg>Figma</span>
+        </div>
       </div>
-      <div class="sk-cat rv d3">
-        <div class="sk-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.2 2.4 3.3 5.4 3.3 9S14.2 18.6 12 21c-2.2-2.4-3.3-5.4-3.3-9S9.8 5.4 12 3Z"/></svg>Other</div>
-        <div class="sk-tags"><span class="sk-t">HackerRank React Certified</span><span class="sk-t">Responsive Design</span><span class="sk-t">Git</span><span class="sk-t">Problem Solving</span></div>
+      <div class="skill-row rv">
+        <div class="sr-label"><span class="sr-num">04</span> Foundations</div>
+        <div class="sr-tags">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2"><circle cx="12" cy="5" r="3"/><circle cx="5" cy="19" r="3"/><circle cx="19" cy="19" r="3"/><line x1="9.5" y1="7.5" x2="6.5" y2="16.5"/><line x1="14.5" y1="7.5" x2="17.5" y2="16.5"/></svg>Data Structures</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="15" x2="23" y2="15"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="15" x2="4" y2="15"/></svg>Algorithms</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>Competitive Programming</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#00599c" stroke-width="2"><path d="M12 2L2 7.5v11L12 24l10-5.5v-11L12 2z"/></svg>C / C++</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#f472b6" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4"/></svg>OOP Architecture</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><rect x="14" y="8" width="6" height="8" rx="1"/></svg>Responsive Design</span>
+          <span><svg viewBox="0 0 24 24" fill="#f05032"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.216 1.378-.07 1.889.44.516.516.66 1.256.438 1.903l2.658 2.659c.647-.222 1.387-.078 1.903.438.718.718.718 1.884 0 2.602-.719.718-1.885.718-2.603 0-.528-.528-.67-1.28-.43-1.936l-2.476-2.476v6.786c.22.106.425.253.601.43.719.719.719 1.885 0 2.603-.718.718-1.885.718-2.603 0-.718-.718-.718-1.884 0-2.603.208-.208.455-.36.719-.452v-7.14c-.264-.092-.511-.244-.719-.452-.534-.534-.672-1.296-.43-1.956L8.03 5.485.452 13.064c-.603.605-.603 1.582 0 2.187l10.48 10.48c.604.603 1.582.603 2.187 0l10.427-10.428c.604-.604.604-1.58 0-2.185z"/></svg>Git Workflow</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#facc15" stroke-width="2"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7z"/></svg>Problem Solving</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="si">
-    <div class="stag rv">Portfolio</div>
-    <h2 class="sh rv">Projects I've <em>built</em></h2>
-    <div class="pg">
+<!-- WORK -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kick">(03) — Selected Work</span>
+      <h2 class="sec-title">Things I've <em>built</em>.</h2>
+    </div>
+    <div class="projects">
 
-      <!-- PROJECT 01: Athenaeum (Featured) -->
-      <div class="pc big rv" data-live="https://actuallyayon-athenaeum.vercel.app/" role="link" tabindex="0">
-        <img class="pc-thumb" src="sites/Athenaeum.png" alt="Athenaeum library app" loading="lazy" decoding="async">
-        <div class="pc-body">
-          <div class="pc-top">
-            <span class="pc-n">01 — Featured</span>
-            <div class="pc-links"><a href="https://github.com/actuallyayon/athenaeum" target="_blank" class="pc-l"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></a><a href="https://actuallyayon-athenaeum.vercel.app/" target="_blank" class="pc-l"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-          <div class="pc-ttl">Athenaeum</div>
-          <p class="pc-d">A modern digital library app where users can explore books, filter by category, search by title or author, borrow titles digitally, and manage secure profiles with BetterAuth and MongoDB.</p>
-          <div class="pc-tech"><span class="pt">Next.js</span><span class="pt">Tailwind CSS</span><span class="pt">DaisyUI</span><span class="pt">BetterAuth</span><span class="pt">MongoDB</span><span class="pt">SwiperJS</span></div>
+      <!-- 01 Cartora -->
+      <article class="proj rv" data-proj="cartora" tabindex="0" role="button" aria-label="View Cartora details">
+        <div class="proj-media">
+          <img src="sites/Cartora.png" alt="Cartora e-commerce platform" loading="lazy" decoding="async"/>
         </div>
-      </div>
+        <div class="proj-info">
+          <div class="proj-top">
+            <span class="proj-num">01 / Featured ★ Flagship Project</span>
+            <div class="proj-links">
+              <a href="https://github.com/actuallyayon/cartora-client" target="_blank" rel="noopener" aria-label="GitHub client repository" title="Client Repository"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
+              <a href="https://github.com/actuallyayon/cartora-server" target="_blank" rel="noopener" aria-label="GitHub server repository" title="Server Repository"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg></a>
+              <a href="https://cartora-client.vercel.app" target="_blank" rel="noopener" aria-label="Live site" title="Live Site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+          </div>
+          <h3 class="proj-title">Cartora</h3>
+          <p class="proj-desc">A full-featured, modern e-commerce platform built for a premium shopping experience — complete with Stripe-powered checkout, real-time notifications, and a full admin dashboard with analytics.</p>
+          <div class="proj-tech"><span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>Tailwind 4</span><span>Stripe</span><span>Recharts</span><span>TanStack Query</span></div>
+          <div class="proj-bottom">
+            <button class="btn-details" data-modal="cartora">
+              <span>View Details</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
 
-      <!-- PROJECT 02: DigiTools -->
-      <div class="pc rv" data-live="https://actuallyayon.github.io/DigiTools/" role="link" tabindex="0">
-        <img class="pc-thumb" src="sites/DigiTools.jpeg" alt="DigiTools" loading="lazy" decoding="async">
-        <div class="pc-body">
-          <div class="pc-top">
-            <span class="pc-n">02</span>
-            <div class="pc-links"><a href="https://github.com/actuallyayon/DigiTools" target="_blank" class="pc-l"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></a><a href="https://actuallyayon.github.io/DigiTools/" target="_blank" class="pc-l"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-          <div class="pc-ttl">DigiTools</div>
-          <p class="pc-d">A digital product marketplace built with React where users can browse and purchase premium AI tools, design assets, and productivity software. Built with React, Vite, and Tailwind CSS.</p>
-          <div class="pc-tech"><span class="pt">React.js</span><span class="pt">Vite</span><span class="pt">Tailwind CSS</span><span class="pt">Responsive Design</span></div>
+      <!-- 02 StartupForge -->
+      <article class="proj rv" data-proj="startupforge" tabindex="0" role="button" aria-label="View StartupForge details">
+        <div class="proj-media">
+          <img src="sites/StartupForge.png" alt="StartupForge platform" loading="lazy" decoding="async"/>
         </div>
-      </div>
+        <div class="proj-info">
+          <div class="proj-top">
+            <span class="proj-num">02</span>
+            <div class="proj-links">
+              <a href="https://github.com/actuallyayon/startupforge-client" target="_blank" rel="noopener" aria-label="GitHub client repository" title="Client Repository"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
+              <a href="https://github.com/actuallyayon/startupforge-server" target="_blank" rel="noopener" aria-label="GitHub server repository" title="Server Repository"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg></a>
+              <a href="https://startupforge-client-nine.vercel.app" target="_blank" rel="noopener" aria-label="Live site" title="Live Site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+          </div>
+          <h3 class="proj-title">StartupForge</h3>
+          <p class="proj-desc">A full-stack platform where startup founders publish startups, post collaboration opportunities, and build early teams — while collaborators browse roles and track applications.</p>
+          <div class="proj-tech"><span>Next.js 15</span><span>React 18</span><span>Tailwind</span><span>Better Auth</span><span>Stripe</span><span>TanStack Query</span></div>
+          <div class="proj-bottom">
+            <button class="btn-details" data-modal="startupforge">
+              <span>View Details</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
 
-      <!-- PROJECT 03: FreshTart -->
-      <div class="pc rv" data-live="https://actuallyayon.github.io/FreshTart/" role="link" tabindex="0">
-        <img class="pc-thumb" src="sites/FreshTart.png" alt="FreshTart screenshot" loading="lazy" decoding="async"/>
-        <div class="pc-body">
-          <div class="pc-top">
-            <span class="pc-n">03</span>
-            <div class="pc-links"><a href="https://github.com/actuallyayon/FreshTart" target="_blank" class="pc-l"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></a><a href="https://actuallyayon.github.io/FreshTart/" target="_blank" class="pc-l"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-          <div class="pc-ttl">FreshTart</div>
-          <p class="pc-d">A farm-to-fork grocery landing page featuring today’s picks, an organic product grid, account sign-up flow, and a contact section — built with a clean, nature-inspired green aesthetic and fully responsive layout.</p>
-          <div class="pc-tech"><span class="pt">HTML</span><span class="pt">CSS</span><span class="pt">JavaScript</span><span class="pt">Responsive Design</span></div>
+      <!-- 03 HabitPilot -->
+      <article class="proj rv" data-proj="habitpilot" tabindex="0" role="button" aria-label="View HabitPilot details">
+        <div class="proj-media">
+          <img src="sites/HabitPilot.png" alt="HabitPilot app" loading="lazy" decoding="async"/>
         </div>
-      </div>
+        <div class="proj-info">
+          <div class="proj-top">
+            <span class="proj-num">03</span>
+            <div class="proj-links">
+              <a href="https://github.com/actuallyayon/habitpilot-client" target="_blank" rel="noopener" aria-label="GitHub client repository" title="Client Repository"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
+              <a href="https://github.com/actuallyayon/habitpilot-server" target="_blank" rel="noopener" aria-label="GitHub server repository" title="Server Repository"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg></a>
+              <a href="https://habitpilot-client.vercel.app/" target="_blank" rel="noopener" aria-label="Live site" title="Live Site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+          </div>
+          <h3 class="proj-title">HabitPilot</h3>
+          <p class="proj-desc">An AI-driven, adaptable habit tracking platform where agentic AI models design, analyze, and constantly recalibrate user habit routines based on real-world feedback.</p>
+          <div class="proj-tech"><span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>Express</span><span>MongoDB</span><span>Groq Llama 3</span><span>Stripe</span></div>
+          <div class="proj-bottom">
+            <button class="btn-details" data-modal="habitpilot">
+              <span>View Details</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
 
-      <!-- PROJECT 04: TechWave -->
-      <div class="pc rv d2" data-live="https://actuallyayon.github.io/Techwave/" role="link" tabindex="0">
-        <img class="pc-thumb" src="sites/TechWave.png" alt="TechWave Podcast" loading="lazy" decoding="async">
-        <div class="pc-body">
-          <div class="pc-top">
-            <span class="pc-n">04</span>
-            <div class="pc-links"><a href="https://github.com/actuallyayon/Techwave" target="_blank" class="pc-l"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></a><a href="https://actuallyayon.github.io/Techwave/" target="_blank" class="pc-l"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div>
-          </div>
-          <div class="pc-ttl">TechWave Podcast</div>
-          <p class="pc-d">A sleek podcast landing page for a tech insights platform — episode listings, host profiles, subscriber CTAs, stats, and a fully responsive dark purple design.</p>
-          <div class="pc-tech"><span class="pt">HTML</span><span class="pt">CSS</span><span class="pt">Responsive Design</span></div>
+      <!-- 04 Athenaeum -->
+      <article class="proj rv" data-proj="athenaeum" tabindex="0" role="button" aria-label="View Athenaeum details">
+        <div class="proj-media">
+          <img src="sites/Athenaeum.png" alt="Athenaeum library app" loading="lazy" decoding="async"/>
         </div>
-      </div>
+        <div class="proj-info">
+          <div class="proj-top">
+            <span class="proj-num">04</span>
+            <div class="proj-links">
+              <a href="https://github.com/actuallyayon/athenaeum" target="_blank" rel="noopener" aria-label="GitHub repository" title="GitHub Repository"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></a>
+              <a href="https://actuallyayon-athenaeum.vercel.app/" target="_blank" rel="noopener" aria-label="Live site" title="Live Site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+            </div>
+          </div>
+          <h3 class="proj-title">Athenaeum</h3>
+          <p class="proj-desc">A modern digital library where users explore books, filter by category, search by title or author, borrow titles digitally, and manage secure profiles — powered by BetterAuth and MongoDB.</p>
+          <div class="proj-tech"><span>Next.js</span><span>Tailwind</span><span>DaisyUI</span><span>BetterAuth</span><span>MongoDB</span><span>SwiperJS</span></div>
+          <div class="proj-bottom">
+            <button class="btn-details" data-modal="athenaeum">
+              <span>View Details</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </article>
 
     </div>
-    <div style="text-align:center;margin-top:2.2rem">
-      <a href="https://github.com/actuallyayon" target="_blank" class="btn-o">See all on GitHub →</a>
+    <div class="work-more rv">
+      <a href="https://github.com/actuallyayon" target="_blank" rel="noopener" class="btn-g" data-magnetic>
+        See everything on GitHub
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" style="background:var(--navy-800);border-top:1px solid var(--border)">
-  <div class="si">
-    <div class="stag rv">Journey</div>
-    <h2 class="sh rv">Education & <em>Experience</em></h2>
-    <div class="tl">
-      <div class="ti rv">
-        <div class="td"><div class="tdi"></div></div>
-        <div>
-          <div class="t-date">2026</div>
-          <div class="t-ttl">HackerRank Frontend Developer (React) Certification</div>
-          <div class="t-org">HackerRank · Certified Professional</div>
-          <div class="t-d">Successfully cleared the HackerRank React (Basic & Intermediate) skills assessment, demonstrating proficiency in React components, hooks, state management, and API integration.</div>
+<!-- JOURNEY -->
+<section id="journey" class="alt">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kick">(04) — Journey</span>
+      <h2 class="sec-title">Education &amp; <em>milestones</em>.</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item rv">
+        <div class="tl-year">2026</div>
+        <div class="tl-body">
+          <h3>HackerRank Frontend Developer (React) Certification</h3>
+          <span class="tl-org">HackerRank · Certified Professional</span>
+          <p>Cleared the React (Basic &amp; Intermediate) skills assessment — demonstrating proficiency in components, hooks, state management and API integration.</p>
         </div>
       </div>
-      <div class="ti rv">
-        <div class="td"><div class="tdi"></div></div>
-        <div>
-          <div class="t-date">2024 — Present</div>
-          <div class="t-ttl">BSc in Computer Science & Engineering</div>
-          <div class="t-org">North Western University, Khulna</div>
-          <div class="t-d">Studying algorithms, data structures, and system design while building production web apps. Active in competitive programming and developer communities.</div>
+      <div class="tl-item rv">
+        <div class="tl-year">2024 — Now</div>
+        <div class="tl-body">
+          <h3>BSc in Computer Science &amp; Engineering</h3>
+          <span class="tl-org">North Western University, Khulna</span>
+          <p>Studying algorithms, data structures and system design while shipping production web apps. Active in competitive programming and developer communities.</p>
         </div>
       </div>
-      <div class="ti rv">
-        <div class="td"><div class="tdi"></div></div>
-        <div>
-          <div class="t-date">Oct — Nov 2024</div>
-          <div class="t-ttl">ICPC Asia Dhaka Preliminary Contest</div>
-          <div class="t-org">ICPC Foundation · Honorable Mention</div>
-          <div class="t-d">Earned an Honorable Mention competing as part of a 3-member team from NWU Khulna (with Md. Hasnain Ahmad & Khan Tanjid Al Islam), solving complex algorithmic problems under strict time constraints.</div>
-        </div>
-      </div>
-      <div class="ti rv">
-        <div class="td"><div class="tdi"></div></div>
-        <div>
-          <div class="t-date">2020 — 2022</div>
-          <div class="t-ttl">Higher Secondary Certificate — Science</div>
-          <div class="t-org">Dumuria College · Perfect GPA 5.00</div>
-          <div class="t-d">Achieved top GPA in Science. Member of the College IT Club — where the passion for programming first began.</div>
+      <div class="tl-item rv">
+        <div class="tl-year">Oct '24</div>
+        <div class="tl-body">
+          <h3>ICPC Asia Dhaka Preliminary Contest</h3>
+          <span class="tl-org">ICPC Foundation · Honorable Mention</span>
+          <p>Earned an Honorable Mention as part of a 3-member team from NWU Khulna, solving complex algorithmic problems under strict time constraints.</p>
         </div>
       </div>
     </div>
@@ -278,87 +357,89 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="ct-bg">
-  <div class="ct-in rv">
-    <div class="stag" style="justify-content:center">Let's Talk</div>
-    <h2 class="ct-big">Got a project<br>in <em>mind?</em></h2>
-    <p class="ct-sub">Open to internships and remote roles. Whether it's a quick question or a full project — I respond within 24 hours.</p>
-    <a href="mailto:actuallyayon@gmail.com" class="ct-mail">actuallyayon@gmail.com</a>
-    <div class="ct-soc">
-      <a href="https://github.com/actuallyayon" target="_blank" class="soc">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        GitHub
-      </a>
-      <a href="https://linkedin.com/in/ayon-webdev" target="_blank" class="soc">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.07-2.06 2.07zM6.78 20.45H3.89V9h2.89v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
-        LinkedIn
-      </a>
-      <a href="tel:+8801327000697" class="soc">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.09 6.09l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        +880 1327-000697
-      </a>
-      <a href="mailto:actuallyayon@gmail.com" class="soc">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Email
-      </a>
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="ct-inner rv">
+      <span class="kick" style="justify-content:center">(05) — Contact</span>
+      <h2 class="ct-title">Let's build<br>something <em>great.</em></h2>
+      <p class="ct-sub">Open to internships and remote roles worldwide. Whether it's a quick question or a full project — I reply within 24 hours.</p>
+      <a href="mailto:actuallyayon@gmail.com" class="ct-mail" data-magnetic>actuallyayon@gmail.com</a>
+      <div class="ct-soc">
+        <a href="https://github.com/actuallyayon" target="_blank" rel="noopener" class="soc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
+        <a href="https://linkedin.com/in/ayon-webdev" target="_blank" rel="noopener" class="soc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.06-.93-2.06-2.07 0-1.14.92-2.06 2.06-2.06 1.14 0 2.06.92 2.06 2.06 0 1.14-.92 2.07-2.06 2.07zM6.78 20.45H3.89V9h2.89v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+        <a href="https://wa.me/8801327000697" target="_blank" rel="noopener" class="soc"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893 0-3.18-1.238-6.167-3.488-8.417"/></svg>WhatsApp</a>
+        <a href="tel:+8801327000697" class="soc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.09 6.09l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+880 1327-000697</a>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div>© <span id="year">2026</span> Ayon</div>
-  <div style="color:var(--blue)"><a href="mailto:actuallyayon@gmail.com">actuallyayon@gmail.com</a></div>
-  <div>Designed &amp; developed by Ayon</div>
+  <div class="ft-l">© <span id="year">2026</span> Obaydur Rahman Ayon</div>
+  <div class="ft-c">Designed &amp; built from scratch in Khulna, BD</div>
+  <a href="#home" class="ft-top">Back to top ↑</a>
 </footer>
 
-<script>
-document.documentElement.classList.add('js-ready');
+<!-- PROJECT DETAILS MODAL -->
+<div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-container">
+    <button class="modal-close" id="modalClose" aria-label="Close details modal">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="modal-banner">
+      <img id="mImg" src="" alt="Project screenshot"/>
+    </div>
+    <div class="modal-body">
+      <div class="modal-header-tag">
+        <span class="modal-num" id="mNum"></span>
+      </div>
+      <h2 class="modal-title" id="mTitle"></h2>
+      <p class="modal-tagline" id="mTagline"></p>
+      <div class="modal-actions" id="mActions"></div>
+      
+      <div class="modal-section">
+        <h3 class="modal-sec-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Main Technology Stack
+        </h3>
+        <div class="modal-tech-list" id="mTech"></div>
+      </div>
 
-const finePointer = window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-const cur=document.getElementById('cur'),curR=document.getElementById('curR');
-if (finePointer) {
-  let mx=0,my=0,rx=0,ry=0;
-  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.transform=`translate3d(${mx}px,${my}px,0) translate(-50%,-50%)`},{passive:true});
-  (function t(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;curR.style.transform=`translate3d(${rx}px,${ry}px,0) translate(-50%,-50%)`;requestAnimationFrame(t)})();
-}
+      <div class="modal-section">
+        <h3 class="modal-sec-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          Project Overview
+        </h3>
+        <p class="modal-desc" id="mDesc"></p>
+      </div>
 
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60),{passive:true});
+      <div class="modal-section">
+        <h3 class="modal-sec-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Key Features
+        </h3>
+        <ul class="modal-list" id="mFeatures"></ul>
+      </div>
 
-const obs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}});
-},{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+      <div class="modal-section">
+        <h3 class="modal-sec-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Challenges Faced &amp; Solutions
+        </h3>
+        <ul class="modal-list" id="mChallenges"></ul>
+      </div>
 
-// Smooth scrolling for anchor links with navbar offset
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector(link.getAttribute('href'));
-    if (target) {
-      const navHeight = document.getElementById('nav').offsetHeight;
-      const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-  });
-});
+      <div class="modal-section">
+        <h3 class="modal-sec-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+          Potential Improvements &amp; Future Plans
+        </h3>
+        <ul class="modal-list" id="mFuture"></ul>
+      </div>
+    </div>
+  </div>
+</div>
 
-document.querySelectorAll('.pc[data-live]').forEach(card => {
-  const openProject = () => window.open(card.dataset.live, '_blank', 'noopener');
-
-  card.addEventListener('click', e => {
-    if (e.target.closest('a')) return;
-    openProject();
-  });
-
-  card.addEventListener('keydown', e => {
-    if (e.key !== 'Enter' && e.key !== ' ') return;
-    if (e.target.closest('a')) return;
-    e.preventDefault();
-    openProject();
-  });
-});
-
-document.getElementById('year').textContent = new Date().getFullYear();
-</script>
+<script src="script.js" defer></script>
 </body>
 </html>
