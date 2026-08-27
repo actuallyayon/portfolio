@@ -9,17 +9,25 @@ if (finePointer && cur && curR) {
     let my = innerHeight / 2;
     let rx = mx;
     let ry = my;
+    let cursorFrame = 0;
+    function moveCursorRing() {
+        rx += (mx - rx) * 0.18;
+        ry += (my - ry) * 0.18;
+        curR.style.transform = `translate3d(${rx}px,${ry}px,0) translate(-50%,-50%)`;
+        if (Math.abs(mx - rx) > 0.1 || Math.abs(my - ry) > 0.1) {
+            cursorFrame = requestAnimationFrame(moveCursorRing);
+        }
+        else {
+            cursorFrame = 0;
+        }
+    }
     addEventListener('mousemove', (e) => {
         mx = e.clientX;
         my = e.clientY;
         cur.style.transform = `translate3d(${mx}px,${my}px,0) translate(-50%,-50%)`;
+        if (!cursorFrame)
+            cursorFrame = requestAnimationFrame(moveCursorRing);
     }, { passive: true });
-    (function loop() {
-        rx += (mx - rx) * 0.15;
-        ry += (my - ry) * 0.15;
-        curR.style.transform = `translate3d(${rx}px,${ry}px,0) translate(-50%,-50%)`;
-        requestAnimationFrame(loop);
-    })();
     document.querySelectorAll('a,button,[role="link"],[role="button"],[data-magnetic]').forEach(el => {
         el.addEventListener('mouseenter', () => curR.classList.add('grow'));
         el.addEventListener('mouseleave', () => curR.classList.remove('grow'));
@@ -28,23 +36,37 @@ if (finePointer && cur && curR) {
 /* nav scrolled + scroll progress */
 const nav = document.getElementById('nav');
 const progress = document.getElementById('progress');
-addEventListener('scroll', () => {
+let scrollFrame = 0;
+function updateScrollUi() {
+    scrollFrame = 0;
     if (nav)
         nav.classList.toggle('scrolled', scrollY > 50);
     const h = document.documentElement;
-    if (progress)
-        progress.style.transform = 'scaleX(' + (h.scrollTop / (h.scrollHeight - h.clientHeight)) + ')';
+    if (progress) {
+        const maxScroll = h.scrollHeight - h.clientHeight;
+        progress.style.transform = 'scaleX(' + (maxScroll > 0 ? h.scrollTop / maxScroll : 0) + ')';
+    }
+}
+addEventListener('scroll', () => {
+    if (!scrollFrame)
+        scrollFrame = requestAnimationFrame(updateScrollUi);
 }, { passive: true });
+updateScrollUi();
 /* reveal */
-const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('on');
-            io.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.15 });
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
+if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('on');
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+}
+else {
+    document.querySelectorAll('.rv').forEach(el => el.classList.add('on'));
+}
 /* count up */
 const countObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -99,7 +121,7 @@ if (navlinks) {
             }
         });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    ['about', 'skills', 'work', 'journey', 'contact'].forEach(id => {
+    ['about', 'skills', 'work', 'certificates', 'journey', 'contact'].forEach(id => {
         const s = document.getElementById(id);
         if (s)
             spy.observe(s);
