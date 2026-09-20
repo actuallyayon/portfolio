@@ -232,6 +232,35 @@ const PROJECTS = {
             "<b>Co-Founder Vesting Tools:</b> Equity calculator and vesting schedule templates for early teams."
         ]
     },
+    edumanage: {
+        num: "Team Project / AI-Powered Academic Platform",
+        title: "EduManage",
+        tagline: "School & Academic Management System",
+        image: "sites/EduManage.png",
+        live: "https://edu-manage-umber-two.vercel.app/",
+        githubClient: "https://github.com/Shifath0570/EduManage",
+        githubServer: "https://github.com/Shifath0570/EduManage_Server",
+        tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "HeroUI", "Express.js", "MongoDB", "Framer Motion", "Recharts", "Google Gemini", "Groq", "JWT"],
+        desc: "EduManage is an AI-powered school and academic management system built from scratch by a four-person team. It brings everyday school operations into one platform with dedicated dashboards for admins, teachers, and students.",
+        features: [
+            "<b>Role-Based Dashboards:</b> Admin, teacher, and student dashboards with JWT authentication and role-based access control.",
+            "<b>AI Academic Tools:</b> AI question paper and notice generation using Google Gemini and Groq, plus an AI study assistant with LaTeX math support.",
+            "<b>Attendance & Alerts:</b> Teacher and admin attendance workflows with analytics, leave approval, and student attendance alerts with AI-analyzed warnings.",
+            "<b>Academic Operations:</b> Exam management, marks entry, result cards, fee collection, payroll, and PDF/Excel receipts.",
+            "<b>My Contribution:</b> Built attendance features, AI-analyzed student warnings, the AI-generated blog section, dynamic Contact Us flow, and responsive dashboard UI.",
+            "<b>Team:</b> Kazi Mohammad Shariful Amin, Md Maksumul Haque Emon, Md. Osman Goni, and Obaydur Rahman Ayon."
+        ],
+        challenges: [
+            "<b>Team Delivery:</b> Coordinated across frontend and backend responsibilities while keeping reviews focused on consistent user flows and data contracts.",
+            "<b>Attendance Logic:</b> Designed attendance workflows that support teacher/admin usage, analytics, leave approval, and student-facing warning states.",
+            "<b>AI Feature Reliability:</b> Integrated AI-generated content in academic workflows while shaping outputs for notices, blogs, and student-facing guidance."
+        ],
+        future: [
+            "<b>Deeper Analytics:</b> Expand attendance, exam, and fee dashboards with richer trend reports for school admins.",
+            "<b>Notification Channels:</b> Add email/SMS alerts for attendance risk, notices, fee reminders, and result publication.",
+            "<b>School Onboarding:</b> Build guided onboarding for multi-school setup, roles, academic sessions, and permission templates."
+        ]
+    },
     habitpilot: {
         num: "03 / Pinned Project",
         title: "HabitPilot",

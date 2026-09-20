@@ -195,6 +195,15 @@ section.alt{background:var(--bg-2);border-top:1px solid var(--line);border-botto
 .btn-details{display:inline-flex;align-items:center;gap:.4rem;padding:.45rem .95rem;border-radius:8px;background:var(--surface-2);border:1px solid var(--line-2);color:var(--text);font-family:var(--disp);font-size:.76rem;font-weight:600;cursor:pointer;transition:background .25s,border-color .25s,color .25s,transform .25s}
 .btn-details:hover{background:var(--accent);border-color:var(--accent);color:#fff;transform:translateX(3px)}
 .work-more{text-align:center;margin-top:2.4rem}
+.team-project-section{margin-top:3rem;padding-top:2.4rem;border-top:1px solid var(--line)}
+.section-subhead{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin-bottom:1.4rem}
+.section-subhead .kick{margin-bottom:.35rem}
+.section-subhead h3{font-family:var(--disp);font-size:clamp(1.35rem,2.8vw,2rem);font-weight:600;letter-spacing:-.02em}
+.team-projects .proj:first-child{grid-column:span 3;flex-direction:row;border-color:var(--line-2);background:linear-gradient(135deg,var(--surface) 0%,var(--surface-2) 100%)}
+.team-projects .proj:first-child .proj-media{width:54%;aspect-ratio:16/9;flex-shrink:0;border-bottom:none;border-right:1px solid var(--line)}
+.team-projects .proj:first-child .proj-info{padding:1.8rem 2rem;justify-content:center}
+.team-projects .proj:first-child .proj-title{font-size:1.65rem}
+.team-projects .proj:first-child .proj-desc{-webkit-line-clamp:5;font-size:.9rem}
 
 /* ---------- CERTIFICATES ---------- */
 .certificates{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
@@ -302,6 +311,9 @@ footer .ft-c{color:var(--muted-d)}
   .projects{grid-template-columns:1fr}
   .proj:first-child{grid-column:span 1;flex-direction:column}
   .proj:first-child .proj-media{width:100%;aspect-ratio:16/9;border-right:none;border-bottom:1px solid var(--line)}
+  .team-projects .proj:first-child{grid-column:span 1;flex-direction:column}
+  .team-projects .proj:first-child .proj-media{width:100%;aspect-ratio:16/9;border-right:none;border-bottom:1px solid var(--line)}
+  .section-subhead{display:block}
 }
 @media(max-width:760px){
   .nav-toggle{display:flex}
