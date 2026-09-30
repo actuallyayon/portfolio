@@ -851,6 +851,9 @@ function setupEventListeners() {
       const marqueeStr = document.getElementById('marqueeSkillsInput')?.value.trim();
       const marqueeArr = marqueeStr ? marqueeStr.split(',').map(s => s.trim()).filter(Boolean) : undefined;
 
+      const bioText = document.getElementById('aboutBioText')?.value.trim() || '';
+      const paragraphs = bioText ? bioText.split('\n').map(p => p.trim()).filter(Boolean) : [];
+
       const payload = {
         name: document.getElementById('profName').value.trim(),
         roleTitle: document.getElementById('profRole').value.trim(),
