@@ -126,7 +126,12 @@ async function loadDashboardData() {
     const projJson = await projRes.json();
     const certJson = await certRes.json();
 
-    if (portJson.success) portfolioData.profile = portJson.data.profile || {};
+    if (portJson.success && portJson.data) {
+      portfolioData.profile = portJson.data.profile || {};
+      try {
+        localStorage.setItem('ayon_portfolio_cache', JSON.stringify(portJson.data));
+      } catch (e) {}
+    }
     if (projJson.success) portfolioData.projects = projJson.data || [];
     if (certJson.success) portfolioData.certificates = certJson.data || [];
 
@@ -518,7 +523,13 @@ function setupEventListeners() {
             body: JSON.stringify({ avatarUrl: data.url }),
           });
 
-          showToast('Profile photo uploaded to ImgBB and saved live!', 'success');
+          if (!portfolioData.profile) portfolioData.profile = {};
+          portfolioData.profile.avatarUrl = data.url;
+          try {
+            localStorage.setItem('ayon_portfolio_cache', JSON.stringify(portfolioData));
+          } catch (e) {}
+
+          showToast('Profile photo uploaded and saved live!', 'success');
         } else {
           showToast(data.message || 'ImgBB upload failed', 'error');
         }

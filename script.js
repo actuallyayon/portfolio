@@ -530,6 +530,105 @@ function bindDynamicInteractions() {
   }
 }
 
+function applyPortfolioData(data) {
+  if (!data) return;
+
+  const profile = data.profile;
+  const projects = data.projects;
+  const certificates = data.certificates;
+
+  if (profile) {
+    if (profile.avatarUrl) {
+      document.querySelectorAll('img[src*="profile/ayon.png"], .portrait img, .about-photo img, [data-avatar-img]').forEach(function(img) {
+        if (img.src !== profile.avatarUrl) {
+          img.src = profile.avatarUrl;
+        }
+      });
+      const preloadLink = document.getElementById('avatarPreloadLink');
+      if (preloadLink) preloadLink.href = profile.avatarUrl;
+    }
+    if (profile.resumeUrl) {
+      document.querySelectorAll('a[data-resume-link], a[href*="resume/Resume.pdf"]').forEach(function(a) {
+        a.href = profile.resumeUrl;
+      });
+    }
+    if (profile.heroDesc) {
+      const heroDescEl = document.querySelector('.hero-desc');
+      if (heroDescEl) heroDescEl.textContent = profile.heroDesc;
+    }
+    if (profile.availableStatus) {
+      const availEl = document.querySelector('.hero-avail');
+      if (availEl) availEl.innerHTML = '<span class="ping"></span> ' + profile.availableStatus;
+    }
+    if (profile.location) {
+      const locEl = document.querySelector('.portrait-tag');
+      if (locEl) locEl.textContent = profile.location;
+    }
+  }
+
+  if (Array.isArray(projects) && projects.length > 0) {
+    projects.forEach(function(p) {
+      PROJECTS[p.slug] = {
+        num: p.num || '',
+        title: p.title,
+        tagline: p.tagline || '',
+        image: p.image,
+        live: p.live || '',
+        serverApi: p.serverApi || '',
+        githubClient: p.githubClient || '',
+        githubServer: p.githubServer || '',
+        tech: p.tech || [],
+        desc: p.desc || '',
+        features: p.features || [],
+        challenges: p.challenges || [],
+        future: p.future || []
+      };
+    });
+
+    const soloProjects = projects.filter(function(p) { return !p.isTeamProject; });
+    const teamProjects = projects.filter(function(p) { return p.isTeamProject; });
+
+    const projectsGrid = document.getElementById('projectsGrid');
+    if (projectsGrid && soloProjects.length > 0) {
+      projectsGrid.innerHTML = soloProjects.map(function(p, idx) { return renderProjectCardHtml(p, idx + 1, false); }).join('');
+    }
+
+    const teamGrid = document.getElementById('teamProjectsGrid');
+    if (teamGrid && teamProjects.length > 0) {
+      teamGrid.innerHTML = teamProjects.map(function(p) { return renderProjectCardHtml(p, null, true); }).join('');
+    }
+  }
+
+  if (Array.isArray(certificates) && certificates.length > 0) {
+    const certsGrid = document.getElementById('certificatesGrid');
+    if (certsGrid) {
+      certsGrid.innerHTML = certificates.map(function(c, idx) { return renderCertificateCardHtml(c, idx + 1); }).join('');
+    }
+  }
+
+  bindDynamicInteractions();
+}
+
+// 1. Immediately apply cached portfolio data from localStorage for 0ms delay
+try {
+  const cachedStr = localStorage.getItem('ayon_portfolio_cache');
+  if (cachedStr) {
+    const cachedData = JSON.parse(cachedStr);
+    if (cachedData) {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+          applyPortfolioData(cachedData);
+        });
+      } else {
+        applyPortfolioData(cachedData);
+      }
+    }
+  }
+} catch (e) {
+  console.debug('Cache parse error:', e);
+}
+
+// 2. Fetch fresh data from API and update cache
 async function hydratePortfolioFromApi() {
   try {
     const res = await fetch('/api/portfolio');
@@ -537,76 +636,13 @@ async function hydratePortfolioFromApi() {
     const json = await res.json();
     if (!json.success || !json.data) return;
 
-    const profile = json.data.profile;
-    const projects = json.data.projects;
-    const certificates = json.data.certificates;
+    // Cache fresh data in localStorage
+    try {
+      localStorage.setItem('ayon_portfolio_cache', JSON.stringify(json.data));
+    } catch (e) {}
 
-    if (profile) {
-      if (profile.avatarUrl) {
-        document.querySelectorAll('img[src*="profile/ayon.png"], .portrait img, .about-photo img').forEach(function(img) {
-          img.src = profile.avatarUrl;
-        });
-      }
-      if (profile.resumeUrl) {
-        document.querySelectorAll('a[data-resume-link], a[href*="resume/Resume.pdf"]').forEach(function(a) {
-          a.href = profile.resumeUrl;
-        });
-      }
-      if (profile.heroDesc) {
-        const heroDescEl = document.querySelector('.hero-desc');
-        if (heroDescEl) heroDescEl.textContent = profile.heroDesc;
-      }
-      if (profile.availableStatus) {
-        const availEl = document.querySelector('.hero-avail');
-        if (availEl) availEl.innerHTML = '<span class="ping"></span> ' + profile.availableStatus;
-      }
-      if (profile.location) {
-        const locEl = document.querySelector('.portrait-tag');
-        if (locEl) locEl.textContent = profile.location;
-      }
-    }
-
-    if (Array.isArray(projects) && projects.length > 0) {
-      projects.forEach(function(p) {
-        PROJECTS[p.slug] = {
-          num: p.num || '',
-          title: p.title,
-          tagline: p.tagline || '',
-          image: p.image,
-          live: p.live || '',
-          serverApi: p.serverApi || '',
-          githubClient: p.githubClient || '',
-          githubServer: p.githubServer || '',
-          tech: p.tech || [],
-          desc: p.desc || '',
-          features: p.features || [],
-          challenges: p.challenges || [],
-          future: p.future || []
-        };
-      });
-
-      const soloProjects = projects.filter(function(p) { return !p.isTeamProject; });
-      const teamProjects = projects.filter(function(p) { return p.isTeamProject; });
-
-      const projectsGrid = document.getElementById('projectsGrid');
-      if (projectsGrid && soloProjects.length > 0) {
-        projectsGrid.innerHTML = soloProjects.map(function(p, idx) { return renderProjectCardHtml(p, idx + 1, false); }).join('');
-      }
-
-      const teamGrid = document.getElementById('teamProjectsGrid');
-      if (teamGrid && teamProjects.length > 0) {
-        teamGrid.innerHTML = teamProjects.map(function(p) { return renderProjectCardHtml(p, null, true); }).join('');
-      }
-    }
-
-    if (Array.isArray(certificates) && certificates.length > 0) {
-      const certsGrid = document.getElementById('certificatesGrid');
-      if (certsGrid) {
-        certsGrid.innerHTML = certificates.map(function(c, idx) { return renderCertificateCardHtml(c, idx + 1); }).join('');
-      }
-    }
-
-    bindDynamicInteractions();
+    // Apply fresh data
+    applyPortfolioData(json.data);
   } catch (err) {
     console.log('Static portfolio fallback:', err);
   }

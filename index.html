@@ -29,7 +29,27 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preload" as="image" href="profile/ayon.png" fetchpriority="high" />
+  <link id="avatarPreloadLink" rel="preload" as="image" href="profile/ayon.png" fetchpriority="high" />
+  <script>
+    (function() {
+      try {
+        var raw = localStorage.getItem('ayon_portfolio_cache');
+        if (raw) {
+          var cache = JSON.parse(raw);
+          if (cache && cache.profile && cache.profile.avatarUrl) {
+            var cachedUrl = cache.profile.avatarUrl;
+            var preloadEl = document.getElementById('avatarPreloadLink');
+            if (preloadEl) preloadEl.href = cachedUrl;
+            document.addEventListener('DOMContentLoaded', function() {
+              document.querySelectorAll('[data-avatar-img], .portrait img, .about-photo img').forEach(function(img) {
+                img.src = cachedUrl;
+              });
+            });
+          }
+        }
+      } catch (e) {}
+    })();
+  </script>
   <link
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
