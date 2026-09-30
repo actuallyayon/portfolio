@@ -42,10 +42,13 @@ body {
 /* AUTH / LOGIN SECTION */
 .auth-wrapper {
   min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 24px 16px;
+  box-sizing: border-box;
   background: radial-gradient(circle at top right, rgba(59, 111, 255, 0.12), transparent 45%),
               radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.08), transparent 45%),
               var(--bg-dark);
@@ -54,11 +57,12 @@ body {
 .auth-card {
   width: 100%;
   max-width: 440px;
+  box-sizing: border-box;
   background: var(--bg-card);
   border: 1px solid var(--border);
   backdrop-filter: blur(20px);
   border-radius: var(--radius-lg);
-  padding: 36px 32px;
+  padding: 36px 30px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
@@ -107,17 +111,21 @@ body {
 
 .input-icon-wrap {
   position: relative;
-  display: flex;
-  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .input-icon-wrap svg:first-child {
   position: absolute;
   left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 17px;
   height: 17px;
   color: var(--text-dim);
   pointer-events: none;
+  z-index: 2;
 }
 
 input[type="text"],
@@ -128,6 +136,7 @@ input[type="number"],
 select,
 textarea {
   width: 100%;
+  box-sizing: border-box;
   background: var(--bg-input);
   border: 1px solid var(--border);
   color: var(--text-main);
@@ -140,8 +149,11 @@ textarea {
 }
 
 .input-icon-wrap input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   padding-left: 42px;
-  padding-right: 42px;
+  padding-right: 44px;
 }
 
 input:focus,
@@ -153,15 +165,26 @@ textarea:focus {
 
 .pwd-toggle {
   position: absolute;
-  right: 12px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
   background: none;
   border: none;
   color: var(--text-dim);
   cursor: pointer;
-  padding: 4px;
+  padding: 0;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.pwd-toggle:hover {
+  color: #fff;
 }
 
 .pwd-toggle svg {
@@ -1773,8 +1796,29 @@ input:checked + .slider:before {
     margin: 0 auto;
   }
 
+  .auth-wrapper {
+    padding: 16px 12px;
+  }
+
   .auth-card {
     padding: 24px 18px;
+    border-radius: var(--radius-md);
+  }
+
+  .auth-header {
+    margin-bottom: 22px;
+  }
+
+  .auth-logo {
+    font-size: 24px;
+  }
+
+  .auth-header h2 {
+    font-size: 18px;
+  }
+
+  .auth-header p {
+    font-size: 12.5px;
   }
 
   .tab-pane {
