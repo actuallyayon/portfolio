@@ -360,6 +360,10 @@ function renderProfileForm() {
     document.getElementById('journeyJsonText').value = JSON.stringify(p.journeyMilestones && p.journeyMilestones.length > 0 ? p.journeyMilestones : defaultJourney, null, 2);
   }
 
+  if (document.getElementById('footerTextInput')) {
+    document.getElementById('footerTextInput').value = p.footerText || 'Designed & built from scratch in Khulna, BD';
+  }
+
   document.getElementById('profEmail').value = p.email || 'actuallyayon@gmail.com';
   document.getElementById('profPhone').value = p.phone || '+880 1327-000697';
   document.getElementById('profWhatsapp').value = p.whatsapp || 'https://wa.me/8801327000697';
@@ -863,6 +867,7 @@ function setupEventListeners() {
         },
         contactHeading: document.getElementById('contactHeading')?.value.trim() || "Let's build\nsomething great.",
         contactSub: document.getElementById('contactSub')?.value.trim() || "Open to internships and remote roles worldwide. Whether it's a quick question or a full project — I reply within 24 hours.",
+        footerText: document.getElementById('footerTextInput')?.value.trim() || 'Designed & built from scratch in Khulna, BD',
         marqueeSkills: marqueeArr,
         journeyMilestones: journeyData,
         email: document.getElementById('profEmail').value.trim(),

@@ -110,6 +110,10 @@ const profileSchema = new mongoose.Schema({
     coreStacks: { type: Number, default: 6 },
     curiosity: { type: String, default: '∞' },
   },
+  footerText: {
+    type: String,
+    default: 'Designed & built from scratch in Khulna, BD',
+  },
 }, {
   timestamps: true,
 });

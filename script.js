@@ -679,6 +679,14 @@ function applyPortfolioData(data) {
         }
       });
     }
+    if (profile.name) {
+      const ftName = document.getElementById('ftName');
+      if (ftName) ftName.textContent = profile.name;
+    }
+    if (profile.footerText) {
+      const ftText = document.getElementById('ftText');
+      if (ftText) ftText.textContent = profile.footerText;
+    }
     if (profile.linkedin) {
       const liEl = document.querySelector('a[href*="linkedin.com"]');
       if (liEl) {
