@@ -201,18 +201,32 @@ textarea:focus {
   background: var(--primary);
   color: #fff;
   border: none;
-  padding: 12px 20px;
+  padding: 0 16px;
+  height: 40px;
   border-radius: var(--radius-sm);
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
   box-shadow: 0 4px 14px rgba(59, 111, 255, 0.35);
-  width: 100%;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .btn-primary {
   width: auto;
+}
+
+.btn-submit svg,
+.btn-primary svg,
+.btn-secondary svg,
+.btn-cancel svg,
+.btn-details svg {
+  width: 16px;
+  height: 16px;
+  max-width: 16px;
+  max-height: 16px;
+  flex-shrink: 0;
 }
 
 .btn-submit:hover,
@@ -801,6 +815,14 @@ textarea:focus {
   margin: 0;
 }
 
+.section-actions-bar .btn-primary {
+  height: 40px;
+  padding: 0 16px;
+  font-size: 13.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
 .search-filter-wrap {
   display: flex;
   align-items: center;
@@ -811,10 +833,14 @@ textarea:focus {
 
 .search-filter-wrap input {
   flex: 1;
+  height: 40px;
+  box-sizing: border-box;
 }
 
 .search-filter-wrap select {
   width: 170px;
+  height: 40px;
+  box-sizing: border-box;
 }
 
 /* PROJECTS ADMIN GRID */
