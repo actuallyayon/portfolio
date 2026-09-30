@@ -174,32 +174,10 @@ section.alt{background:var(--bg-2);border-top:1px solid var(--line);border-botto
 .proj:first-child .proj-media{width:54%;aspect-ratio:16/9;flex-shrink:0;border-bottom:none;border-right:1px solid var(--line)}
 .proj-media::before,.modal-banner::before{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.09) 50%,rgba(255,255,255,0) 100%);background-size:200% 100%;animation:skeleton-shimmer 1.5s infinite ease-in-out;pointer-events:none;transition:opacity .4s var(--ease)}
 .proj-media.is-loaded::before,.modal-banner.is-loaded::before{opacity:0;pointer-events:none}
-.proj-media img,.modal-banner img{width:100%;height:100%;object-fit:cover;object-position:top center;opacity:0;transition:opacity .45s var(--ease),transform .5s var(--ease)}
+.proj-media img,.modal-banner img{width:100%;height:100%;object-fit:cover;object-position:top left;opacity:0;transition:opacity .45s var(--ease),transform .5s var(--ease)}
 .proj-media.is-loaded img,.modal-banner.is-loaded img{opacity:1}
 .proj:hover .proj-media img{transform:scale(1.03)}
 @keyframes skeleton-shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
-
-/* Anchored & Zoomed Project Thumbnails */
-.proj[data-proj="cartora"] .proj-media img,
-.proj[data-proj="edumanage"] .proj-media img {
-  object-position: top left;
-}
-.proj[data-proj="startupforge"] .proj-media img {
-  object-position: top left;
-  transform: scale(1.15);
-  transform-origin: top left;
-}
-.proj[data-proj="startupforge"]:hover .proj-media img {
-  transform: scale(1.2);
-}
-.proj[data-proj="habitpilot"] .proj-media img {
-  object-position: top center;
-  transform: scale(1.16);
-  transform-origin: top center;
-}
-.proj[data-proj="habitpilot"]:hover .proj-media img {
-  transform: scale(1.21);
-}
 
 .proj-info{padding:1.35rem 1.4rem;display:flex;flex-direction:column;flex:1}
 .proj:first-child .proj-info{padding:1.8rem 2rem;justify-content:center}
