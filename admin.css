@@ -192,7 +192,27 @@ textarea:focus {
   height: 18px;
 }
 
-.btn-submit,
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  width: 100%;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 4px 14px rgba(59, 111, 255, 0.35);
+  box-sizing: border-box;
+  margin-top: 8px;
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -201,8 +221,9 @@ textarea:focus {
   background: var(--primary);
   color: #fff;
   border: none;
-  padding: 0 16px;
+  width: auto;
   height: 40px;
+  padding: 0 16px;
   border-radius: var(--radius-sm);
   font-size: 13.5px;
   font-weight: 600;
@@ -211,10 +232,6 @@ textarea:focus {
   box-shadow: 0 4px 14px rgba(59, 111, 255, 0.35);
   white-space: nowrap;
   box-sizing: border-box;
-}
-
-.btn-primary {
-  width: auto;
 }
 
 .btn-submit svg,
