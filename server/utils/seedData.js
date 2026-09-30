@@ -15,7 +15,7 @@ const defaultProjects = [
     githubClient: 'https://github.com/actuallyayon/cartora-client',
     githubServer: 'https://github.com/actuallyayon/cartora-server',
     tech: ['Next.js 16 (App Router)', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'TanStack React Query 5', 'Stripe Elements', 'Framer Motion', 'Recharts', 'Google OAuth', 'Vercel'],
-    desc: 'A full-featured, modern e-commerce platform built for a premium shopping experience — complete with Stripe-powered checkout, real-time notifications, and a full admin dashboard with analytics. Cartora seamlessly connects customer shopping workflows with robust merchant controls.',
+    desc: 'A full-featured e-commerce platform with Stripe checkout, real-time alerts, and admin analytics.',
     features: [
       '<b>Product Catalog & Details:</b> Browse, search, and filter products with category navigation, image galleries, size charts, and variant selection.',
       '<b>Shopping Cart & Wishlist:</b> Real-time cart totals plus a wishlist to save favorite products for later.',
@@ -51,7 +51,7 @@ const defaultProjects = [
     githubClient: 'https://github.com/actuallyayon/startupforge-client',
     githubServer: 'https://github.com/actuallyayon/startupforge-server',
     tech: ['Next.js 15 (App Router)', 'React 18', 'Tailwind CSS', 'TanStack Query', 'Better Auth', 'Stripe', 'Axios', 'Framer Motion', 'Recharts', 'Vercel'],
-    desc: 'A full-stack platform where startup founders can publish their startups, post collaboration opportunities, and build early teams — while collaborators browse opportunities, apply to roles, and track their applications every step of the way.',
+    desc: 'A full-stack platform where founders launch startups, post open roles, and build early teams.',
     features: [
       '<b>Role-Based Dashboards:</b> Dedicated experiences for founders, collaborators, and admins — each tailored to their specific workflow.',
       '<b>Secure Authentication:</b> Email/password and Google sign-in powered by Better Auth.',
@@ -86,7 +86,7 @@ const defaultProjects = [
     githubClient: 'https://github.com/actuallyayon/habitpilot-client',
     githubServer: 'https://github.com/actuallyayon/habitpilot-server',
     tech: ['Next.js 16 (App Router)', 'React 19', 'TypeScript', 'Tailwind CSS 4.0', 'TanStack React Query v5', 'Express.js', 'MongoDB', 'Groq Cloud (Llama 3)', 'Stripe', 'Framer Motion', 'Recharts', 'Vercel'],
-    desc: 'An AI-driven, adaptable habit tracking platform where agentic AI models design, analyze, and constantly recalibrate user habit routines based on real-world feedback.',
+    desc: 'An AI-driven habit tracker where agentic models design, analyze, and adapt routines in real time.',
     features: [
       '<b>AI Onboarding & Plan Generator:</b> Step-by-step questionnaire generates tailor-made habit plans suited to each user\'s lifestyle.',
       '<b>AI Routine Analyzer:</b> Groq-powered Llama 3 integration designs habit schedules, customizes checklists, and analyzes daily check-ins.',
@@ -122,7 +122,7 @@ const defaultProjects = [
     githubClient: 'https://github.com/actuallyayon/athenaeum',
     githubServer: '',
     tech: ['Next.js', 'React', 'Tailwind CSS', 'DaisyUI', 'BetterAuth', 'MongoDB', 'SwiperJS', 'Vercel'],
-    desc: 'A modern digital library where users explore books, filter by category, search by title or author, borrow titles digitally, and manage secure profiles — powered by BetterAuth and MongoDB.',
+    desc: 'A modern digital library for browsing catalogs, digital borrowing, and managing user profiles.',
     features: [
       '<b>Digital Library Catalog:</b> Category filtering, dynamic title/author search, and book previews.',
       '<b>Digital Borrowing System:</b> Manage borrowed books with due date tracking and instant returns.',
@@ -152,7 +152,7 @@ const defaultProjects = [
     githubClient: 'https://github.com/Shifath0570/EduManage',
     githubServer: 'https://github.com/Shifath0570/EduManage_Server',
     tech: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'HeroUI', 'Express.js', 'MongoDB', 'Framer Motion', 'Recharts', 'Google Gemini', 'Groq', 'JWT'],
-    desc: 'EduManage is an AI-powered school and academic management system built from scratch by a four-person team. It brings everyday school operations into one platform with dedicated dashboards for admins, teachers, and students.',
+    desc: 'An AI-powered academic platform with dedicated dashboards for admins, teachers, and students.',
     features: [
       '<b>Role-Based Dashboards:</b> Admin, teacher, and student dashboards with JWT authentication and role-based access control.',
       '<b>AI Academic Tools:</b> AI question paper and notice generation using Google Gemini and Groq, plus an AI study assistant with LaTeX math support.',
