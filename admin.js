@@ -323,6 +323,43 @@ function renderProfileForm() {
     document.getElementById('aboutBioText').value = p.aboutParagraphs.join('\n\n');
   }
 
+  const facts = p.aboutFacts || {};
+  if (document.getElementById('factEducation')) document.getElementById('factEducation').value = facts.education || 'BSc CSE · NWU Khulna';
+  if (document.getElementById('factFocus')) document.getElementById('factFocus').value = facts.focus || 'Full Stack Web';
+  if (document.getElementById('factCertified')) document.getElementById('factCertified').value = facts.certified || 'Programming Hero & HackerRank';
+  if (document.getElementById('factBasedIn')) document.getElementById('factBasedIn').value = facts.basedIn || 'Khulna, Bangladesh';
+
+  if (document.getElementById('contactHeading')) document.getElementById('contactHeading').value = p.contactHeading || "Let's build something great.";
+  if (document.getElementById('contactSub')) document.getElementById('contactSub').value = p.contactSub || "Open to internships and remote roles worldwide. Whether it's a quick question or a full project — I reply within 24 hours.";
+
+  if (document.getElementById('marqueeSkillsInput')) {
+    document.getElementById('marqueeSkillsInput').value = Array.isArray(p.marqueeSkills) && p.marqueeSkills.length > 0 ? p.marqueeSkills.join(', ') : 'React, Node.js, MongoDB, TypeScript, Next.js, Tailwind, Express, Full Stack, REST API, Redux Toolkit';
+  }
+
+  const defaultJourney = [
+    {
+      year: '2026',
+      title: 'Complete Web Development Course With Programming Hero',
+      org: 'Programming Hero · Certificate of Completion With Excellence',
+      desc: 'Completed the Batch 13 program from January 1, 2026 to July 17, 2026, building proficiency across HTML, CSS, JavaScript, React.js, Next.js, Node.js, Express.js, MongoDB, and professional AI-powered development practices.'
+    },
+    {
+      year: '2026',
+      title: 'Frontend Developer (React) Certification',
+      org: 'HackerRank · Verified Skill',
+      desc: 'Earned a React-focused certification demonstrating component architecture, hooks, state management, API integration, and async data handling.'
+    },
+    {
+      year: '2024 — Now',
+      title: 'BSc in Computer Science & Engineering',
+      org: 'North Western University, Khulna',
+      desc: 'Studying algorithms, data structures, software engineering, and systems fundamentals while shipping production-minded full-stack web applications.'
+    }
+  ];
+  if (document.getElementById('journeyJsonText')) {
+    document.getElementById('journeyJsonText').value = JSON.stringify(p.journeyMilestones && p.journeyMilestones.length > 0 ? p.journeyMilestones : defaultJourney, null, 2);
+  }
+
   document.getElementById('profEmail').value = p.email || 'actuallyayon@gmail.com';
   document.getElementById('profPhone').value = p.phone || '+880 1327-000697';
   document.getElementById('profWhatsapp').value = p.whatsapp || 'https://wa.me/8801327000697';
@@ -796,8 +833,19 @@ function setupEventListeners() {
       e.preventDefault();
       const saveBtn = document.getElementById('saveProfileBtn');
 
-      const aboutText = document.getElementById('aboutBioText').value;
-      const paragraphs = aboutText.split('\n\n').map(p => p.trim()).filter(Boolean);
+      let journeyData = undefined;
+      const journeyStr = document.getElementById('journeyJsonText')?.value.trim();
+      if (journeyStr) {
+        try {
+          journeyData = JSON.parse(journeyStr);
+        } catch (err) {
+          showToast('Invalid JSON syntax in Journey & Milestones.', 'error');
+          return;
+        }
+      }
+
+      const marqueeStr = document.getElementById('marqueeSkillsInput')?.value.trim();
+      const marqueeArr = marqueeStr ? marqueeStr.split(',').map(s => s.trim()).filter(Boolean) : undefined;
 
       const payload = {
         name: document.getElementById('profName').value.trim(),
@@ -807,6 +855,16 @@ function setupEventListeners() {
         location: document.getElementById('locationText').value.trim(),
         avatarUrl: document.getElementById('avatarUrlManual').value.trim(),
         aboutParagraphs: paragraphs.length > 0 ? paragraphs : undefined,
+        aboutFacts: {
+          education: document.getElementById('factEducation')?.value.trim() || 'BSc CSE · NWU Khulna',
+          focus: document.getElementById('factFocus')?.value.trim() || 'Full Stack Web',
+          certified: document.getElementById('factCertified')?.value.trim() || 'Programming Hero & HackerRank',
+          basedIn: document.getElementById('factBasedIn')?.value.trim() || 'Khulna, Bangladesh',
+        },
+        contactHeading: document.getElementById('contactHeading')?.value.trim() || "Let's build\nsomething great.",
+        contactSub: document.getElementById('contactSub')?.value.trim() || "Open to internships and remote roles worldwide. Whether it's a quick question or a full project — I reply within 24 hours.",
+        marqueeSkills: marqueeArr,
+        journeyMilestones: journeyData,
         email: document.getElementById('profEmail').value.trim(),
         phone: document.getElementById('profPhone').value.trim(),
         whatsapp: document.getElementById('profWhatsapp').value.trim(),

@@ -463,7 +463,41 @@
 
             <div class="form-group">
               <label for="aboutBioText">About Section Paragraphs (One paragraph per line)</label>
-              <textarea id="aboutBioText" rows="5"></textarea>
+              <textarea id="aboutBioText" rows="4"></textarea>
+            </div>
+
+            <!-- About Quick Facts -->
+            <div class="form-divider" style="margin: 20px 0 14px; font-weight: 600; color: #60a5fa; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">About Quick Facts</div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="factEducation">Education Fact</label>
+                <input type="text" id="factEducation" placeholder="BSc CSE · NWU Khulna" />
+              </div>
+              <div class="form-group">
+                <label for="factFocus">Focus Fact</label>
+                <input type="text" id="factFocus" placeholder="Full Stack Web" />
+              </div>
+              <div class="form-group">
+                <label for="factCertified">Certified Fact</label>
+                <input type="text" id="factCertified" placeholder="Programming Hero & HackerRank" />
+              </div>
+              <div class="form-group">
+                <label for="factBasedIn">Based In Fact</label>
+                <input type="text" id="factBasedIn" placeholder="Khulna, Bangladesh" />
+              </div>
+            </div>
+
+            <!-- Contact & Social Details -->
+            <div class="form-divider" style="margin: 20px 0 14px; font-weight: 600; color: #60a5fa; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Contact Section Content &amp; Social Links</div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="contactHeading">Contact Heading</label>
+                <input type="text" id="contactHeading" placeholder="Let's build something great." />
+              </div>
+              <div class="form-group">
+                <label for="contactSub">Contact Subtitle</label>
+                <input type="text" id="contactSub" placeholder="Open to internships and remote roles worldwide..." />
+              </div>
             </div>
 
             <div class="form-grid-3">
@@ -487,6 +521,18 @@
                 <label for="profLinkedin">LinkedIn URL</label>
                 <input type="text" id="profLinkedin" value="https://linkedin.com/in/ayon-webdev" />
               </div>
+              <div class="form-group">
+                <label for="marqueeSkillsInput">Marquee Ticker Skills (Comma-separated)</label>
+                <input type="text" id="marqueeSkillsInput" placeholder="React, Node.js, MongoDB, TypeScript, Next.js..." />
+              </div>
+            </div>
+
+            <!-- Journey / Timeline Milestones -->
+            <div class="form-divider" style="margin: 20px 0 14px; font-weight: 600; color: #60a5fa; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">Journey &amp; Milestones (Timeline)</div>
+            <div class="form-group">
+              <label for="journeyJsonText">Timeline Milestones (Structured JSON)</label>
+              <textarea id="journeyJsonText" rows="6" class="font-mono" style="font-size: 12px;"></textarea>
+              <p class="tip-text" style="font-size: 11.5px; color: var(--text-dim); margin-top: 4px;">Edit or add your education and certifications milestones here in JSON format ([{ "year": "2026", "title": "...", "org": "...", "desc": "..." }]).</p>
             </div>
 
             <div class="form-submit-row">

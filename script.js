@@ -602,6 +602,56 @@ function applyPortfolioData(data) {
         }).join('');
       }
     }
+    if (profile.aboutFacts) {
+      const facts = profile.aboutFacts;
+      const factsWrap = document.querySelector('.about-facts');
+      if (factsWrap) {
+        factsWrap.innerHTML = 
+          '<div class="fact"><span class="fact-k">Education</span><span class="fact-v">' + (facts.education || 'BSc CSE · NWU Khulna') + '</span></div>' +
+          '<div class="fact"><span class="fact-k">Focus</span><span class="fact-v">' + (facts.focus || 'Full Stack Web') + '</span></div>' +
+          '<div class="fact"><span class="fact-k">Certified</span><span class="fact-v">' + (facts.certified || 'Programming Hero &amp; HackerRank') + '</span></div>' +
+          '<div class="fact"><span class="fact-k">Based in</span><span class="fact-v">' + (facts.basedIn || 'Khulna, Bangladesh') + '</span></div>';
+      }
+    }
+    if (profile.contactHeading) {
+      const ctTitle = document.querySelector('.ct-title');
+      if (ctTitle) {
+        const parts = profile.contactHeading.split('\n');
+        if (parts.length > 1) {
+          ctTitle.innerHTML = parts[0] + '<br>' + parts.slice(1).join(' ');
+        } else {
+          ctTitle.innerHTML = profile.contactHeading;
+        }
+      }
+    }
+    if (profile.contactSub) {
+      const ctSub = document.querySelector('.ct-sub');
+      if (ctSub) ctSub.textContent = profile.contactSub;
+    }
+    if (Array.isArray(profile.marqueeSkills) && profile.marqueeSkills.length > 0) {
+      const mqContainer = document.querySelector('.mq-t');
+      if (mqContainer) {
+        const tickerHtml = profile.marqueeSkills.map(function(s) {
+          return '<span>' + s + '</span><i>✦</i>';
+        }).join('');
+        mqContainer.innerHTML = tickerHtml + tickerHtml;
+      }
+    }
+    if (Array.isArray(profile.journeyMilestones) && profile.journeyMilestones.length > 0) {
+      const tl = document.querySelector('.timeline');
+      if (tl) {
+        tl.innerHTML = profile.journeyMilestones.map(function(item) {
+          return '<div class="tl-item rv on">' +
+            '<div class="tl-year">' + (item.year || '') + '</div>' +
+            '<div class="tl-body">' +
+              '<h3>' + (item.title || '') + '</h3>' +
+              (item.org ? '<span class="tl-org">' + item.org + '</span>' : '') +
+              '<p>' + (item.desc || '') + '</p>' +
+            '</div>' +
+          '</div>';
+        }).join('');
+      }
+    }
     if (profile.email) {
       const mailEl = document.querySelector('.ct-mail');
       if (mailEl) {
