@@ -68,22 +68,28 @@ else {
     document.querySelectorAll('.rv').forEach(el => el.classList.add('on'));
 }
 /* count up */
+var countedElements = new Set();
+function animateCountUp(el, to) {
+    let n = 0;
+    const step = Math.max(1, Math.round(to / 30));
+    const timer = window.setInterval(() => {
+        n += step;
+        if (n >= to) {
+            n = to;
+            clearInterval(timer);
+        }
+        el.textContent = n + (to >= 10 ? '+' : '');
+    }, 35);
+}
+
 const countObs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (!entry.isIntersecting)
             return;
         const el = entry.target;
         const to = +(el.dataset.count || '0');
-        let n = 0;
-        const step = Math.max(1, Math.round(to / 30));
-        const timer = window.setInterval(() => {
-            n += step;
-            if (n >= to) {
-                n = to;
-                clearInterval(timer);
-            }
-            el.textContent = n + (to >= 10 ? '+' : '');
-        }, 35);
+        animateCountUp(el, to);
+        countedElements.add(el);
         countObs.unobserve(el);
     });
 }, { threshold: 0.6 });
@@ -564,6 +570,71 @@ function applyPortfolioData(data) {
       const locEl = document.querySelector('.portrait-tag');
       if (locEl) locEl.textContent = profile.location;
     }
+    if (profile.stats) {
+      const stats = profile.stats;
+      document.querySelectorAll('.hero-meta .hm').forEach(function(hm) {
+        const label = hm.querySelector('.hm-l')?.textContent.trim().toLowerCase();
+        const numEl = hm.querySelector('.hm-n');
+        if (!numEl) return;
+
+        let targetVal = null;
+        if (label && label.includes('years') && stats.yearsCoding !== undefined) {
+          targetVal = stats.yearsCoding;
+        } else if (label && label.includes('projects') && stats.projectsShipped !== undefined) {
+          targetVal = stats.projectsShipped;
+        } else if (label && label.includes('core') && stats.coreStacks !== undefined) {
+          targetVal = stats.coreStacks;
+        } else if (label && label.includes('curiosity') && stats.curiosity !== undefined) {
+          numEl.textContent = stats.curiosity;
+        }
+
+        if (targetVal !== null) {
+          numEl.dataset.count = String(targetVal);
+          numEl.textContent = targetVal + (targetVal >= 10 ? '+' : '');
+        }
+      });
+    }
+    if (Array.isArray(profile.aboutParagraphs) && profile.aboutParagraphs.length > 0) {
+      const aboutBody = document.querySelector('.about-body');
+      if (aboutBody) {
+        aboutBody.innerHTML = profile.aboutParagraphs.map(function(para, idx) {
+          return idx === 0 ? '<p class="lead">' + para + '</p>' : '<p>' + para + '</p>';
+        }).join('');
+      }
+    }
+    if (profile.email) {
+      const mailEl = document.querySelector('.ct-mail');
+      if (mailEl) {
+        mailEl.href = 'mailto:' + profile.email;
+        mailEl.textContent = profile.email;
+      }
+    }
+    if (profile.phone) {
+      const phoneEl = document.querySelector('a[href^="tel:"]');
+      if (phoneEl) {
+        phoneEl.href = 'tel:' + profile.phone.replace(/[^0-9+]/g, '');
+        phoneEl.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.09 6.09l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>' + profile.phone;
+      }
+    }
+    if (profile.whatsapp) {
+      const waEl = document.querySelector('a[href*="wa.me"]');
+      if (waEl) {
+        waEl.href = profile.whatsapp;
+      }
+    }
+    if (profile.github) {
+      document.querySelectorAll('a[href*="github.com/actuallyayon"]').forEach(function(el) {
+        if (!el.href.includes('-') && !el.closest('.proj-links')) {
+          el.href = profile.github;
+        }
+      });
+    }
+    if (profile.linkedin) {
+      const liEl = document.querySelector('a[href*="linkedin.com"]');
+      if (liEl) {
+        liEl.href = profile.linkedin;
+      }
+    }
   }
 
   if (Array.isArray(projects) && projects.length > 0) {
@@ -631,7 +702,7 @@ try {
 // 2. Fetch fresh data from API and update cache
 async function hydratePortfolioFromApi() {
   try {
-    const res = await fetch('/api/portfolio');
+    const res = await fetch('/api/portfolio?t=' + Date.now(), { cache: 'no-store' });
     if (!res.ok) return;
     const json = await res.json();
     if (!json.success || !json.data) return;
