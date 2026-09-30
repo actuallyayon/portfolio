@@ -30,6 +30,7 @@ const pageTitle = document.getElementById('pageTitle');
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const mobileSidebarClose = document.getElementById('mobileSidebarClose');
 const sidebar = document.getElementById('sidebar');
+const sidebarBackdrop = document.getElementById('sidebarBackdrop');
 const refreshBtn = document.getElementById('refreshBtn');
 
 // Modals
@@ -415,15 +416,32 @@ function setupEventListeners() {
       if (pageTitle) pageTitle.textContent = titleMap[tabKey] || 'Admin Dashboard';
 
       if (sidebar) sidebar.classList.remove('open');
+      if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
+      document.body.style.overflow = '';
     });
   });
 
-  // Mobile menu
-  if (mobileMenuBtn && sidebar) {
-    mobileMenuBtn.addEventListener('click', () => sidebar.classList.add('open'));
+  // Mobile menu open / close
+  const openMobileSidebar = () => {
+    if (sidebar) sidebar.classList.add('open');
+    if (sidebarBackdrop) sidebarBackdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeMobileSidebar = () => {
+    if (sidebar) sidebar.classList.remove('open');
+    if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', openMobileSidebar);
   }
-  if (mobileSidebarClose && sidebar) {
-    mobileSidebarClose.addEventListener('click', () => sidebar.classList.remove('open'));
+  if (mobileSidebarClose) {
+    mobileSidebarClose.addEventListener('click', closeMobileSidebar);
+  }
+  if (sidebarBackdrop) {
+    sidebarBackdrop.addEventListener('click', closeMobileSidebar);
   }
 
   // Refresh
