@@ -436,3 +436,192 @@ document.querySelectorAll('.proj-media img').forEach(img => {
 const yearEl = document.getElementById('year');
 if (yearEl)
     yearEl.textContent = String(new Date().getFullYear());
+
+/* DYNAMIC DATA HYDRATION FROM API */
+function renderProjectCardHtml(p, numIndex, isTeam) {
+  const displayNum = p.num || (isTeam ? 'Team Project' : (numIndex < 10 ? '0' + numIndex : numIndex));
+  const clientGithub = p.githubClient ? '<a href="' + p.githubClient + '" target="_blank" rel="noopener" aria-label="GitHub client repository" title="Client Repository"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.38.6.11.82-.26.82-.58v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg></a>' : '';
+  const serverGithub = p.githubServer ? '<a href="' + p.githubServer + '" target="_blank" rel="noopener" aria-label="GitHub server repository" title="Server Repository"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg></a>' : '';
+  const liveLink = p.live ? '<a href="' + p.live + '" target="_blank" rel="noopener" aria-label="Live site" title="Live Site"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>' : '';
+  const techBadges = (p.tech || []).slice(0, 7).map(function(t) { return '<span>' + t + '</span>'; }).join('');
+
+  return '<article class="proj rv on" data-proj="' + p.slug + '" tabindex="0" role="button" aria-label="View ' + p.title + ' details">' +
+    '<div class="proj-media is-loaded">' +
+      '<img src="' + p.image + '" alt="' + p.title + '" loading="lazy" decoding="async" onerror="this.src=\'sites/Cartora.png\'" />' +
+    '</div>' +
+    '<div class="proj-info">' +
+      '<div class="proj-top">' +
+        '<span class="proj-num">' + displayNum + '</span>' +
+        '<div class="proj-links">' + clientGithub + serverGithub + liveLink + '</div>' +
+      '</div>' +
+      '<h3 class="proj-title">' + p.title + '</h3>' +
+      '<p class="proj-desc">' + p.desc + '</p>' +
+      '<div class="proj-tech">' + techBadges + '</div>' +
+      '<div class="proj-bottom">' +
+        '<button class="btn-details" data-modal="' + p.slug + '">' +
+          '<span>View Details</span>' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
+            '<path d="M5 12h14M12 5l7 7-7 7" />' +
+          '</svg>' +
+        '</button>' +
+      '</div>' +
+    '</div>' +
+  '</article>';
+}
+
+function renderCertificateCardHtml(c, idx) {
+  const displayNum = c.num || ((idx < 10 ? '0' + idx : idx) + ' / Verified');
+  return '<article class="cert-card rv on">' +
+    '<a class="cert-preview" href="' + (c.driveLink || c.pdfUrl || '#') + '" target="_blank" rel="noopener" aria-label="Open ' + c.title + '">' +
+      '<img src="' + c.coverImage + '" alt="' + c.title + '" loading="lazy" decoding="async" onerror="this.src=\'Certificates/programming-hero-certificate-cover.png\'" />' +
+    '</a>' +
+    '<div class="cert-body">' +
+      '<span class="cert-num">' + displayNum + '</span>' +
+      '<h3>' + c.title + '</h3>' +
+      '<p>' + (c.desc || '') + '</p>' +
+      '<div class="cert-meta"><span>' + c.organization + '</span><span>' + (c.dateRange || '') + '</span></div>' +
+      '<div class="cert-actions">' +
+        (c.driveLink ? '<a href="' + c.driveLink + '" target="_blank" rel="noopener" class="btn-details"><span>Visit Certificate</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9" /></svg></a>' : '') +
+        (c.pdfUrl ? '<a href="' + c.pdfUrl + '" download class="btn-details cert-download" aria-label="Download ' + c.title + '"><span>Download</span></a>' : '') +
+      '</div>' +
+    '</div>' +
+  '</article>';
+}
+
+function bindDynamicInteractions() {
+  document.querySelectorAll('.proj[data-proj]').forEach(function(card) {
+    const key = card.dataset.proj;
+    if (!key) return;
+    card.onclick = function(e) {
+      if (!e.target.closest('a')) openModal(key);
+    };
+    card.onkeydown = function(e) {
+      if ((e.key === 'Enter' || e.key === ' ') && !e.target.closest('a')) {
+        e.preventDefault();
+        openModal(key);
+      }
+    };
+  });
+
+  document.querySelectorAll('.btn-details[data-modal]').forEach(function(btn) {
+    btn.onclick = function(e) {
+      e.stopPropagation();
+      openModal(btn.dataset.modal);
+    };
+  });
+
+  document.querySelectorAll('.proj-media img').forEach(function(img) {
+    const container = img.closest('.proj-media');
+    if (container) {
+      if (img.complete && img.naturalHeight !== 0) {
+        container.classList.add('is-loaded');
+      } else {
+        img.onload = function() { container.classList.add('is-loaded'); };
+        img.onerror = function() { container.classList.add('is-loaded'); };
+      }
+    }
+  });
+
+  if (finePointer && typeof curR !== 'undefined' && curR) {
+    document.querySelectorAll('a,button,[role="link"],[role="button"],[data-magnetic]').forEach(function(el) {
+      el.onmouseenter = function() { curR.classList.add('grow'); };
+      el.onmouseleave = function() { curR.classList.remove('grow'); };
+    });
+  }
+}
+
+async function hydratePortfolioFromApi() {
+  try {
+    const res = await fetch('/api/portfolio');
+    if (!res.ok) return;
+    const json = await res.json();
+    if (!json.success || !json.data) return;
+
+    const profile = json.data.profile;
+    const projects = json.data.projects;
+    const certificates = json.data.certificates;
+
+    if (profile) {
+      if (profile.avatarUrl) {
+        document.querySelectorAll('img[src*="profile/ayon.png"], .portrait img, .about-photo img').forEach(function(img) {
+          img.src = profile.avatarUrl;
+        });
+      }
+      if (profile.resumeUrl) {
+        document.querySelectorAll('a[data-resume-link], a[href*="resume/Resume.pdf"]').forEach(function(a) {
+          a.href = profile.resumeUrl;
+        });
+      }
+      if (profile.heroDesc) {
+        const heroDescEl = document.querySelector('.hero-desc');
+        if (heroDescEl) heroDescEl.textContent = profile.heroDesc;
+      }
+      if (profile.availableStatus) {
+        const availEl = document.querySelector('.hero-avail');
+        if (availEl) availEl.innerHTML = '<span class="ping"></span> ' + profile.availableStatus;
+      }
+      if (profile.location) {
+        const locEl = document.querySelector('.portrait-tag');
+        if (locEl) locEl.textContent = profile.location;
+      }
+    }
+
+    if (Array.isArray(projects) && projects.length > 0) {
+      projects.forEach(function(p) {
+        PROJECTS[p.slug] = {
+          num: p.num || '',
+          title: p.title,
+          tagline: p.tagline || '',
+          image: p.image,
+          live: p.live || '',
+          serverApi: p.serverApi || '',
+          githubClient: p.githubClient || '',
+          githubServer: p.githubServer || '',
+          tech: p.tech || [],
+          desc: p.desc || '',
+          features: p.features || [],
+          challenges: p.challenges || [],
+          future: p.future || []
+        };
+      });
+
+      const soloProjects = projects.filter(function(p) { return !p.isTeamProject; });
+      const teamProjects = projects.filter(function(p) { return p.isTeamProject; });
+
+      const projectsGrid = document.getElementById('projectsGrid');
+      if (projectsGrid && soloProjects.length > 0) {
+        projectsGrid.innerHTML = soloProjects.map(function(p, idx) { return renderProjectCardHtml(p, idx + 1, false); }).join('');
+      }
+
+      const teamGrid = document.getElementById('teamProjectsGrid');
+      if (teamGrid && teamProjects.length > 0) {
+        teamGrid.innerHTML = teamProjects.map(function(p) { return renderProjectCardHtml(p, null, true); }).join('');
+      }
+    }
+
+    if (Array.isArray(certificates) && certificates.length > 0) {
+      const certsGrid = document.getElementById('certificatesGrid');
+      if (certsGrid) {
+        certsGrid.innerHTML = certificates.map(function(c, idx) { return renderCertificateCardHtml(c, idx + 1); }).join('');
+      }
+    }
+
+    bindDynamicInteractions();
+  } catch (err) {
+    console.log('Static portfolio fallback:', err);
+  }
+}
+
+addEventListener('keydown', function(e) {
+  if (e.ctrlKey && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+    e.preventDefault();
+    window.open('/admin', '_blank');
+  }
+});
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', hydratePortfolioFromApi);
+} else {
+  hydratePortfolioFromApi();
+}
+

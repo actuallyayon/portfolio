@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard — Obaydur Rahman Ayon</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#05080f" />
+
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2305080f'/%3E%3Ctext x='50' y='70' font-family='Arial,sans-serif' font-size='58' font-weight='700' text-anchor='middle' fill='%233b6fff'%3EA%3C/text%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+
+<body>
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- AUTH SECTION (LOGIN MODAL/VIEW) -->
+  <div class="auth-wrapper" id="authSection">
+    <div class="auth-card">
+      <div class="auth-header">
+        <div class="auth-logo">Ayon<b>.</b></div>
+        <h2>Admin Portal</h2>
+        <p>Authenticate with JWT to manage portfolio, projects, photos, and certificates.</p>
+      </div>
+
+      <form id="loginForm" class="auth-form" autocomplete="off">
+        <div class="form-group">
+          <label for="loginEmail">Email Address</label>
+          <div class="input-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <input type="email" id="loginEmail" placeholder="actuallyayon@gmail.com" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <div class="input-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg>
+            <input type="password" id="loginPassword" placeholder="Enter your password" required />
+            <button type="button" class="pwd-toggle" id="togglePwdBtn" aria-label="Toggle password visibility">
+              <svg id="eyeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit" id="loginBtn">
+          <span class="btn-text">Sign In to Dashboard</span>
+          <div class="btn-spinner" style="display: none;"></div>
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        <a href="/" target="_blank" class="back-link">← Return to Public Portfolio</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD MAIN WRAPPER -->
+  <div class="dashboard-wrapper" id="dashboardSection" style="display: none;">
+    
+    <!-- SIDEBAR -->
+    <aside class="dash-sidebar" id="sidebar">
+      <div class="sidebar-head">
+        <div class="logo">Ayon<b>.</b> <span class="badge-admin">Admin</span></div>
+        <button class="mobile-close-btn" id="mobileSidebarClose" aria-label="Close sidebar">✕</button>
+      </div>
+
+      <div class="admin-profile-snippet">
+        <div class="avatar-wrap">
+          <img id="sideAvatar" src="profile/ayon.png" alt="Ayon" />
+        </div>
+        <div class="admin-info">
+          <strong id="sideAdminName">Obaydur Rahman Ayon</strong>
+          <small id="sideAdminEmail">actuallyayon@gmail.com</small>
+        </div>
+      </div>
+
+      <nav class="dash-nav">
+        <button class="nav-item active" data-tab="overview">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+          </svg>
+          Overview
+        </button>
+
+        <button class="nav-item" data-tab="projects">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+            <polyline points="2 17 12 22 22 17" />
+            <polyline points="2 12 12 17 22 12" />
+          </svg>
+          Projects Manager
+          <span class="count-pill" id="projectCountBadge">0</span>
+        </button>
+
+        <button class="nav-item" data-tab="certificates">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="7" />
+            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+          </svg>
+          Certificates
+          <span class="count-pill" id="certCountBadge">0</span>
+        </button>
+
+        <button class="nav-item" data-tab="profile">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          Profile &amp; Photo
+        </button>
+
+        <button class="nav-item" data-tab="resume">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+            <polyline points="10 9 9 9 8 9" />
+          </svg>
+          Resume Manager
+        </button>
+
+        <button class="nav-item" data-tab="account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+          </svg>
+          Security &amp; Auth
+        </button>
+      </nav>
+
+      <div class="sidebar-foot">
+        <a href="/" target="_blank" class="btn-side-action">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+          View Live Site
+        </a>
+        <button class="btn-logout" id="logoutBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
+          </svg>
+          Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="dash-main">
+      <!-- TOP HEADER -->
+      <header class="dash-topbar">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="topbar-title">
+          <h1 id="pageTitle">Dashboard Overview</h1>
+          <span class="db-status-tag"><span class="ping-dot"></span> MongoDB Connected</span>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn-refresh" id="refreshBtn" title="Sync &amp; Refresh Data">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 4v6h-6" />
+              <path d="M1 20v-6h6" />
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+            </svg>
+          </button>
+          <a href="/" target="_blank" class="btn-preview-link">
+            <span>Live Portfolio</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+          </a>
+        </div>
+      </header>
+
+      <!-- TAB 1: OVERVIEW -->
+      <section class="tab-pane active" id="pane-overview">
+        <div class="stats-cards-grid">
+          <div class="stat-card">
+            <div class="stat-icon p-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                <polyline points="2 17 12 22 22 17" />
+                <polyline points="2 12 12 17 22 12" />
+              </svg>
+            </div>
+            <div class="stat-details">
+              <span class="stat-label">Total Projects</span>
+              <h2 id="ovTotalProjects">0</h2>
+              <small id="ovTeamProjects">0 Team Projects</small>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon c-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="8" r="7" />
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+              </svg>
+            </div>
+            <div class="stat-details">
+              <span class="stat-label">Certificates</span>
+              <h2 id="ovTotalCerts">0</h2>
+              <small>Verified credentials</small>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon i-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <polyline points="21 15 16 10 5 21" />
+              </svg>
+            </div>
+            <div class="stat-details">
+              <span class="stat-label">ImgBB Storage</span>
+              <h2>Active</h2>
+              <small>Cloud API Connected</small>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon r-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+            </div>
+            <div class="stat-details">
+              <span class="stat-label">Resume Status</span>
+              <h2>PDF Synced</h2>
+              <small id="ovResumeName">Resume.pdf</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="overview-quick-grid">
+          <div class="card-panel">
+            <div class="panel-head">
+              <h3>Quick Actions</h3>
+            </div>
+            <div class="quick-actions-btns">
+              <button class="btn-quick" id="btnQuickAddProj">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <span>Add New Project</span>
+              </button>
+              <button class="btn-quick" id="btnQuickAddCert">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <span>Add Certificate</span>
+              </button>
+              <button class="btn-quick" id="btnQuickUploadPhoto">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="17 8 12 3 7 8" />
+                  <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                <span>Update Photo</span>
+              </button>
+              <button class="btn-quick" id="btnQuickUploadResume">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                </svg>
+                <span>Upload Resume</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="card-panel">
+            <div class="panel-head">
+              <h3>Live Portfolio Profile Preview</h3>
+            </div>
+            <div class="preview-mini-profile">
+              <img id="ovPreviewAvatar" src="profile/ayon.png" alt="Ayon" />
+              <div>
+                <h4 id="ovPreviewName">Obaydur Rahman Ayon</h4>
+                <p id="ovPreviewTitle" class="muted-text">Full Stack Developer</p>
+                <div class="hero-stats-preview">
+                  <span id="ovStatY">5 Yrs Coding</span> · 
+                  <span id="ovStatP">11 Projects</span> · 
+                  <span id="ovStatS">6 Core Stacks</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: PROJECTS MANAGER -->
+      <section class="tab-pane" id="pane-projects">
+        <div class="section-actions-bar">
+          <div class="search-filter-wrap">
+            <input type="text" id="projectSearchInput" placeholder="Search projects by title, tech..." />
+            <select id="projectTypeFilter">
+              <option value="all">All Projects</option>
+              <option value="solo">Individual Projects</option>
+              <option value="team">Team / Group Projects</option>
+            </select>
+          </div>
+          <button class="btn-primary" id="btnOpenNewProjectModal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            <span>Create Project</span>
+          </button>
+        </div>
+
+        <div class="projects-admin-grid" id="projectsAdminList">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- TAB 3: CERTIFICATES -->
+      <section class="tab-pane" id="pane-certificates">
+        <div class="section-actions-bar">
+          <h2>Manage Certificates &amp; Credentials</h2>
+          <button class="btn-primary" id="btnOpenNewCertModal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            <span>Add Certificate</span>
+          </button>
+        </div>
+
+        <div class="certs-admin-grid" id="certsAdminList">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- TAB 4: PROFILE & PHOTO -->
+      <section class="tab-pane" id="pane-profile">
+        <form id="profileForm" class="panel-form">
+          <div class="grid-2col">
+            <!-- Profile Photo Uploader with ImgBB -->
+            <div class="card-panel">
+              <div class="panel-head">
+                <h3>Profile Avatar / Photo</h3>
+                <span class="badge-tag">ImgBB Hosted</span>
+              </div>
+              <div class="avatar-upload-block">
+                <div class="avatar-preview-box">
+                  <img id="profileAvatarPreview" src="profile/ayon.png" alt="Profile photo" />
+                  <div class="avatar-loading-overlay" id="avatarLoadingOverlay" style="display: none;">
+                    <div class="btn-spinner"></div>
+                    <span>Uploading to ImgBB...</span>
+                  </div>
+                </div>
+                <div class="avatar-upload-controls">
+                  <label for="avatarFileInput" class="btn-upload-file">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="17 8 12 3 7 8" />
+                      <line x1="12" y1="3" x2="12" y2="15" />
+                    </svg>
+                    Choose Photo to Upload
+                  </label>
+                  <input type="file" id="avatarFileInput" accept="image/*" style="display: none;" />
+                  <p class="tip-text">PNG, JPG, WEBP. Directly uploads to ImgBB and updates your portfolio live.</p>
+                  
+                  <div class="form-group" style="margin-top: 14px;">
+                    <label for="avatarUrlManual">Or Image URL</label>
+                    <input type="text" id="avatarUrlManual" placeholder="profile/ayon.png or https://i.ibb.co/..." />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats & Availability -->
+            <div class="card-panel">
+              <div class="panel-head">
+                <h3>Hero Stats &amp; Status</h3>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="statYears">Years Coding</label>
+                  <input type="number" id="statYears" value="5" min="0" />
+                </div>
+                <div class="form-group">
+                  <label for="statProjects">Projects Shipped</label>
+                  <input type="number" id="statProjects" value="11" min="0" />
+                </div>
+                <div class="form-group">
+                  <label for="statStacks">Core Stacks</label>
+                  <input type="number" id="statStacks" value="6" min="0" />
+                </div>
+                <div class="form-group">
+                  <label for="statCuriosity">Curiosity Label</label>
+                  <input type="text" id="statCuriosity" value="∞" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="availableStatus">Availability Badge Text</label>
+                <input type="text" id="availableStatus" value="Available · Open to Work" />
+              </div>
+              <div class="form-group">
+                <label for="locationText">Location</label>
+                <input type="text" id="locationText" value="Khulna, BD · GMT+6" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Bio & Personal Info -->
+          <div class="card-panel" style="margin-top: 20px;">
+            <div class="panel-head">
+              <h3>Personal Info &amp; Bio Paragraphs</h3>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label for="profName">Display Name</label>
+                <input type="text" id="profName" value="Obaydur Rahman Ayon" required />
+              </div>
+              <div class="form-group">
+                <label for="profRole">Role Title / Headline</label>
+                <input type="text" id="profRole" value="Full Stack Developer" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="heroDesc">Hero Short Description</label>
+              <textarea id="heroDesc" rows="2" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="aboutBioText">About Section Paragraphs (One paragraph per line)</label>
+              <textarea id="aboutBioText" rows="5"></textarea>
+            </div>
+
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label for="profEmail">Contact Email</label>
+                <input type="email" id="profEmail" value="actuallyayon@gmail.com" />
+              </div>
+              <div class="form-group">
+                <label for="profPhone">Phone</label>
+                <input type="text" id="profPhone" value="+880 1327-000697" />
+              </div>
+              <div class="form-group">
+                <label for="profWhatsapp">WhatsApp Link</label>
+                <input type="text" id="profWhatsapp" value="https://wa.me/8801327000697" />
+              </div>
+              <div class="form-group">
+                <label for="profGithub">GitHub URL</label>
+                <input type="text" id="profGithub" value="https://github.com/actuallyayon" />
+              </div>
+              <div class="form-group">
+                <label for="profLinkedin">LinkedIn URL</label>
+                <input type="text" id="profLinkedin" value="https://linkedin.com/in/ayon-webdev" />
+              </div>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn-primary" id="saveProfileBtn">
+                <span class="btn-text">Save &amp; Update Live Profile</span>
+                <div class="btn-spinner" style="display: none;"></div>
+              </button>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- TAB 5: RESUME MANAGER -->
+      <section class="tab-pane" id="pane-resume">
+        <div class="card-panel max-w-700">
+          <div class="panel-head">
+            <h3>Resume Management</h3>
+            <span class="badge-tag">PDF Upload &amp; Link</span>
+          </div>
+
+          <div class="resume-manager-block">
+            <div class="resume-current-info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+              </svg>
+              <div>
+                <strong>Current Resume Link:</strong>
+                <p id="currentResumeDisplay" class="font-mono">resume/Resume.pdf?v=20260921</p>
+              </div>
+              <a id="currentResumeTestBtn" href="resume/Resume.pdf?v=20260921" target="_blank" class="btn-details">
+                Test View PDF
+              </a>
+            </div>
+
+            <div class="upload-dropzone" id="resumeDropzone">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
+              <h4>Upload New Resume (PDF)</h4>
+              <p>Drag &amp; drop your updated resume PDF here, or click to browse</p>
+              <input type="file" id="resumeFileInput" accept=".pdf" style="display: none;" />
+              <button type="button" class="btn-outline" onclick="document.getElementById('resumeFileInput').click()">
+                Select PDF File
+              </button>
+              <div id="resumeUploadProgress" class="upload-progress" style="display: none;">
+                <div class="btn-spinner"></div>
+                <span>Uploading and saving PDF...</span>
+              </div>
+            </div>
+
+            <div class="form-group" style="margin-top: 24px;">
+              <label for="manualResumeUrl">Or provide an external PDF link (Google Drive / Cloudinary):</label>
+              <div class="input-with-btn">
+                <input type="text" id="manualResumeUrl" placeholder="https://drive.google.com/..." />
+                <button type="button" class="btn-secondary" id="saveManualResumeBtn">Update Link</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 6: SECURITY & AUTH -->
+      <section class="tab-pane" id="pane-account">
+        <div class="card-panel max-w-700">
+          <div class="panel-head">
+            <h3>Admin Credentials &amp; Password</h3>
+          </div>
+
+          <form id="securityForm" class="panel-form">
+            <div class="form-group">
+              <label for="secAdminName">Admin Name</label>
+              <input type="text" id="secAdminName" required />
+            </div>
+
+            <div class="form-group">
+              <label for="secAdminEmail">Admin Email</label>
+              <input type="email" id="secAdminEmail" required />
+            </div>
+
+            <div class="form-divider">Change Password (Optional)</div>
+
+            <div class="form-group">
+              <label for="secCurrentPassword">Current Password</label>
+              <input type="password" id="secCurrentPassword" placeholder="Required only if changing password" />
+            </div>
+
+            <div class="form-group">
+              <label for="secNewPassword">New Password</label>
+              <input type="password" id="secNewPassword" placeholder="Enter new strong password" />
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn-primary" id="saveSecurityBtn">
+                <span class="btn-text">Save Security Settings</span>
+                <div class="btn-spinner" style="display: none;"></div>
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- PROJECT EDIT / CREATE MODAL -->
+  <div class="dash-modal" id="projectFormModal">
+    <div class="modal-card modal-lg">
+      <div class="modal-head">
+        <h2 id="projectModalTitle">Create Project</h2>
+        <button class="modal-x" id="closeProjectModalBtn">✕</button>
+      </div>
+
+      <form id="projectEditorForm" class="modal-form">
+        <input type="hidden" id="editProjectId" />
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="projTitleInput">Project Title *</label>
+            <input type="text" id="projTitleInput" placeholder="e.g. Cartora, EduManage" required />
+          </div>
+          <div class="form-group">
+            <label for="projNumInput">Number / Header Tag</label>
+            <input type="text" id="projNumInput" placeholder="01 / Featured ★ Flagship Project" />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="projTaglineInput">Tagline</label>
+            <input type="text" id="projTaglineInput" placeholder="Full-Featured Modern E-Commerce Platform" />
+          </div>
+          <div class="form-group">
+            <label for="projOrderInput">Display Order</label>
+            <input type="number" id="projOrderInput" value="1" min="1" />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="checkbox-group">
+            <label class="toggle-switch">
+              <input type="checkbox" id="projIsTeamCheckbox" />
+              <span class="slider"></span>
+            </label>
+            <span>Team / Group Project</span>
+          </div>
+
+          <div class="checkbox-group">
+            <label class="toggle-switch">
+              <input type="checkbox" id="projIsFeaturedCheckbox" />
+              <span class="slider"></span>
+            </label>
+            <span>Flagship / Featured Project</span>
+          </div>
+        </div>
+
+        <!-- Project Image with ImgBB upload -->
+        <div class="form-group image-upload-group">
+          <label>Project Screenshot / Cover Image * (ImgBB Powered)</label>
+          <div class="proj-img-preview-row">
+            <div class="proj-preview-thumb">
+              <img id="projImagePreview" src="sites/Cartora.png" alt="Preview" />
+              <div class="img-spinner" id="projImgSpinner" style="display: none;">
+                <div class="btn-spinner"></div>
+              </div>
+            </div>
+            <div class="proj-img-inputs">
+              <label for="projImageFileInput" class="btn-upload-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="17 8 12 3 7 8" />
+                  <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                Upload to ImgBB
+              </label>
+              <input type="file" id="projImageFileInput" accept="image/*" style="display: none;" />
+              <input type="text" id="projImageUrlInput" placeholder="Or enter image URL: sites/Cartora.png or ImgBB URL" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="projLiveInput">Live Site URL</label>
+            <input type="url" id="projLiveInput" placeholder="https://..." />
+          </div>
+          <div class="form-group">
+            <label for="projServerApiInput">Server / API URL (Optional)</label>
+            <input type="url" id="projServerApiInput" placeholder="https://..." />
+          </div>
+          <div class="form-group">
+            <label for="projGithubClientInput">GitHub Client Repo URL</label>
+            <input type="url" id="projGithubClientInput" placeholder="https://github.com/..." />
+          </div>
+          <div class="form-group">
+            <label for="projGithubServerInput">GitHub Server Repo URL</label>
+            <input type="url" id="projGithubServerInput" placeholder="https://github.com/..." />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="projTechInput">Tech Stack Badges (Comma-separated)</label>
+          <input type="text" id="projTechInput" placeholder="Next.js 16, React 19, TypeScript, Tailwind CSS 4, Stripe, MongoDB" />
+        </div>
+
+        <div class="form-group">
+          <label for="projDescInput">Project Short Description (Card Overview) *</label>
+          <textarea id="projDescInput" rows="3" required placeholder="A full-featured modern platform..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="projFeaturesInput">Key Features (One feature per line, supports &lt;b&gt; tags)</label>
+          <textarea id="projFeaturesInput" rows="4" placeholder="&lt;b&gt;Feature Title:&lt;/b&gt; Detailed description of the feature..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="projChallengesInput">Challenges Faced &amp; Solutions (One per line)</label>
+          <textarea id="projChallengesInput" rows="3" placeholder="&lt;b&gt;Challenge Title:&lt;/b&gt; How it was solved..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="projFutureInput">Future Improvements (One per line)</label>
+          <textarea id="projFutureInput" rows="3" placeholder="&lt;b&gt;Improvement Title:&lt;/b&gt; Future plans..."></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="cancelProjectModalBtn">Cancel</button>
+          <button type="submit" class="btn-primary" id="saveProjectBtn">
+            <span class="btn-text">Save Project</span>
+            <div class="btn-spinner" style="display: none;"></div>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- CERTIFICATE EDIT / CREATE MODAL -->
+  <div class="dash-modal" id="certFormModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h2 id="certModalTitle">Add Certificate</h2>
+        <button class="modal-x" id="closeCertModalBtn">✕</button>
+      </div>
+
+      <form id="certEditorForm" class="modal-form">
+        <input type="hidden" id="editCertId" />
+
+        <div class="form-group">
+          <label for="certTitleInput">Certificate Title *</label>
+          <input type="text" id="certTitleInput" placeholder="e.g. Complete Web Development Course" required />
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="certOrgInput">Issuing Organization *</label>
+            <input type="text" id="certOrgInput" placeholder="e.g. Programming Hero, HackerRank" required />
+          </div>
+          <div class="form-group">
+            <label for="certDateInput">Date / Batch Range</label>
+            <input type="text" id="certDateInput" placeholder="e.g. Jan 2026 - Jul 2026" />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="certNumInput">Badge Number</label>
+            <input type="text" id="certNumInput" placeholder="01 / Batch 13" />
+          </div>
+          <div class="form-group">
+            <label for="certOrderInput">Display Order</label>
+            <input type="number" id="certOrderInput" value="1" min="1" />
+          </div>
+        </div>
+
+        <!-- Cover Image with ImgBB upload -->
+        <div class="form-group image-upload-group">
+          <label>Certificate Cover Image * (ImgBB Hosted)</label>
+          <div class="proj-img-preview-row">
+            <div class="proj-preview-thumb">
+              <img id="certImagePreview" src="Certificates/programming-hero-certificate-cover.png" alt="Preview" />
+              <div class="img-spinner" id="certImgSpinner" style="display: none;">
+                <div class="btn-spinner"></div>
+              </div>
+            </div>
+            <div class="proj-img-inputs">
+              <label for="certImageFileInput" class="btn-upload-file">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="17 8 12 3 7 8" />
+                  <line x1="12" y1="3" x2="12" y2="15" />
+                </svg>
+                Upload Cover to ImgBB
+              </label>
+              <input type="file" id="certImageFileInput" accept="image/*" style="display: none;" />
+              <input type="text" id="certImageUrlInput" placeholder="Or enter image URL: Certificates/... or ImgBB" required />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="certDriveInput">Verification / Drive Link</label>
+            <input type="url" id="certDriveInput" placeholder="https://drive.google.com/..." />
+          </div>
+          <div class="form-group">
+            <label for="certPdfInput">PDF Download Link / Path</label>
+            <input type="text" id="certPdfInput" placeholder="Certificates/certificate.pdf" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="certDescInput">Description / Credential Scope</label>
+          <textarea id="certDescInput" rows="3" placeholder="Certificate of completion with excellence..."></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="cancelCertModalBtn">Cancel</button>
+          <button type="submit" class="btn-primary" id="saveCertBtn">
+            <span class="btn-text">Save Certificate</span>
+            <div class="btn-spinner" style="display: none;"></div>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+
+</html>

@@ -87,7 +87,7 @@
               </svg>
             </a>
             <a href="resume/Resume.pdf?v=20260921" target="_blank" rel="noopener" class="btn-g"
-              download="Obaydur_Rahman_Ayon_Resume.pdf">
+              download="Obaydur_Rahman_Ayon_Resume.pdf" data-resume-link>
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                 <path d="M7 10l5 5 5-5" />
@@ -351,7 +351,7 @@
         <span class="kick">(03) — Selected Work</span>
         <h2 class="sec-title">Things I've <em>built</em>.</h2>
       </div>
-      <div class="projects">
+      <div class="projects" id="projectsGrid">
 
         <!-- 01 Cartora -->
         <article class="proj rv" data-proj="cartora" tabindex="0" role="button" aria-label="View Cartora details">
@@ -542,7 +542,7 @@
           <span class="kick">(03.1) - Team Project</span>
           <h3>Built with a product team.</h3>
         </div>
-        <div class="projects team-projects">
+        <div class="projects team-projects" id="teamProjectsGrid">
           <article class="proj rv" data-proj="edumanage" tabindex="0" role="button"
             aria-label="View EduManage details">
             <div class="proj-media">
@@ -611,7 +611,7 @@
         <span class="kick">(04) — Certificates</span>
         <h2 class="sec-title">Proof of focused <em>practice</em>.</h2>
       </div>
-      <div class="certificates">
+      <div class="certificates" id="certificatesGrid">
         <article class="cert-card rv">
           <a class="cert-preview"
             href="https://drive.google.com/file/d/19daIIWxL7xoh2oL5SMrJVbqwztaQxLE2/view?usp=sharing" target="_blank"
@@ -748,7 +748,7 @@
   </section>
 
   <footer>
-    <div class="ft-l">© <span id="year">2026</span> Obaydur Rahman Ayon</div>
+    <div class="ft-l">© <span id="year">2026</span> Obaydur Rahman Ayon · <a href="/admin" class="ft-admin-link" style="color: var(--text-dim); text-decoration: none; font-size: 0.85em; transition: color 0.2s;" onmouseover="this.style.color='#3b6fff'" onmouseout="this.style.color='var(--text-dim)'">Admin Portal 🔒</a></div>
     <div class="ft-c">Designed &amp; built from scratch in Khulna, BD</div>
     <a href="#home" class="ft-top">Back to top ↑</a>
   </footer>
